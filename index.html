@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyeshow Paris 2 — Opticien créateur, rue Montmartre</title>
+<link rel="icon" href="assets/favicon-32.jpg">
+<style>
+@font-face{font-family:'Antic Slab';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/AnticSlab-400.woff2') format('woff2');}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/PTSans-400.woff2') format('woff2');}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/PTSans-700.woff2') format('woff2');}
+
+:root{
+  --or:#d3b03a;
+  --or-fonce:#b39630;
+  --or-pale:#f6efdb;
+  --encre:#333333;
+  --noir:#0c0c0c;
+  --gris:#46494a;
+  --gris-clair:#bebdbd;
+  --blanc:#ffffff;
+  --creme:#fbf9f4;
+  --serif:'Antic Slab',Georgia,serif;
+  --sans:'PT Sans',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--serif);color:var(--encre);background:var(--blanc);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--or);color:var(--noir)}
+
+/* ---------- Barre haute ---------- */
+.topbar{background:var(--noir);color:#d8d8d8;font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.topbar-inner{max-width:1240px;margin:0 auto;padding:8px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topbar b{color:var(--or);font-weight:700}
+.topbar span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--or);display:inline-block}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
+.header-inner{max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo img{height:30px;width:auto}
+nav{display:flex;gap:30px;font-family:var(--sans);font-size:14px;letter-spacing:.05em;text-transform:uppercase}
+nav a{color:var(--gris);position:relative;padding:4px 0;transition:color .25s}
+nav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--or);transition:width .25s}
+nav a:hover{color:var(--noir)}
+nav a:hover::after{width:100%}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--or);color:var(--noir);font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px;border-radius:999px;transition:background .25s,transform .25s;white-space:nowrap}
+.cta:hover{background:var(--or-fonce);transform:translateY(-1px)}
+.cta.ghost{background:transparent;border:2px solid var(--noir);color:var(--noir)}
+.cta.ghost:hover{background:var(--noir);color:var(--or)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--creme)}
+.hero::before{content:'';position:absolute;top:-220px;right:-180px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(211,176,58,.16),transparent 65%)}
+.hero-inner{max-width:1240px;margin:0 auto;padding:84px 24px 96px;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;position:relative}
+.kicker{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--or-fonce);display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.kicker::before{content:'';width:38px;height:2px;background:var(--or)}
+.hero h1{font-size:clamp(40px,4.6vw,62px);line-height:1.12;font-weight:400;color:var(--noir);margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--or-fonce)}
+.hero p.lede{font-size:19px;color:var(--gris);max-width:480px;margin-bottom:36px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-figure{position:relative}
+.hero-figure .frame{border-radius:280px 280px 28px 28px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(12,12,12,.35)}
+.hero-figure img{width:100%;height:600px;object-fit:cover;object-position:center 30%}
+.hero-figure::after{content:'';position:absolute;inset:18px -18px -18px 18px;border:1.5px solid var(--or);border-radius:280px 280px 28px 28px;pointer-events:none}
+.hero-badge{position:absolute;bottom:28px;left:-28px;background:var(--noir);color:var(--blanc);padding:18px 24px;border-radius:18px;font-family:var(--sans);box-shadow:0 20px 40px -18px rgba(12,12,12,.5)}
+.hero-badge .big{font-family:var(--serif);font-size:22px;color:var(--or);display:block}
+.hero-badge .small{font-size:12.5px;letter-spacing:.05em;color:#cfcfcf}
+
+/* ---------- Marquee marques ---------- */
+.marquee{background:var(--noir);color:var(--blanc);overflow:hidden;padding:20px 0;border-top:3px solid var(--or)}
+.marquee-track{display:flex;gap:56px;width:max-content;animation:defile 42s linear infinite;font-family:var(--sans);font-size:15px;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap}
+.marquee-track span{display:flex;align-items:center;gap:56px}
+.marquee-track i{font-style:normal;color:var(--or)}
+@keyframes defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- Sections communes ---------- */
+section{padding:96px 24px}
+.wrap{max-width:1240px;margin:0 auto}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:56px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(30px,3.2vw,44px);line-height:1.2;font-weight:400;color:var(--noir);max-width:560px}
+.sec-head h2 em{font-style:italic;color:var(--or-fonce)}
+.sec-head .note{font-family:var(--sans);font-size:14px;color:var(--gris);max-width:340px}
+.sec-head .note b{color:var(--or-fonce)}
+
+/* ---------- Créateurs ---------- */
+.createurs{background:var(--blanc)}
+.grid-createurs{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.card{border-radius:22px;overflow:hidden;position:relative;background:var(--creme);box-shadow:0 24px 50px -30px rgba(12,12,12,.28);transition:transform .35s}
+.card:hover{transform:translateY(-6px)}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover img{transform:scale(1.045)}
+.card .tag{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.94);border-radius:999px;padding:6px 14px;font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--noir)}
+.card .label{position:absolute;left:0;right:0;bottom:0;padding:80px 22px 18px;background:linear-gradient(rgba(12,12,12,0) 0%,rgba(12,12,12,.55) 55%,rgba(12,12,12,.92) 100%);color:var(--blanc)}
+.card .label .nom{font-size:24px;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.65)}
+.card .label .detail{text-shadow:0 1px 8px rgba(0,0,0,.65)}
+.card .label .detail{font-family:var(--sans);font-size:13px;color:var(--or);letter-spacing:.06em}
+.c-large{grid-column:span 5;grid-row:span 2;min-height:640px}
+.c-mid{grid-column:span 4;min-height:308px}
+.c-mid2{grid-column:span 3;min-height:308px}
+.c-band{grid-column:span 7;min-height:330px}
+.c-band2{grid-column:span 5;min-height:330px}
+
+/* ---------- En boutique cette semaine (vitrine stock) ---------- */
+.stock{background:var(--creme);border-top:1px solid #f0ead6;border-bottom:1px solid #f0ead6}
+.stock-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:44px;flex-wrap:wrap}
+.stock-head h2{font-size:clamp(30px,3.2vw,44px);line-height:1.2;font-weight:400;color:var(--noir);max-width:600px}
+.stock-head h2 em{font-style:italic;color:var(--or-fonce)}
+.badge-sync{display:inline-flex;align-items:center;gap:10px;background:var(--blanc);border:1px solid rgba(211,176,58,.55);border-radius:999px;padding:10px 18px;font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--or-fonce)}
+.badge-sync .pulse{width:9px;height:9px;border-radius:50%;background:var(--or);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(211,176,58,.5)}70%{box-shadow:0 0 0 9px rgba(211,176,58,0)}100%{box-shadow:0 0 0 0 rgba(211,176,58,0)}}
+.stock-note{font-family:var(--sans);font-size:14px;color:var(--gris);max-width:380px}
+.grid-stock{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tuile-stock{background:var(--blanc);border-radius:18px;overflow:hidden;box-shadow:0 16px 36px -26px rgba(12,12,12,.3);transition:transform .3s;position:relative}
+.tuile-stock:hover{transform:translateY(-5px)}
+.tuile-stock .visuel{aspect-ratio:1;overflow:hidden;background:#f3f1ea}
+.tuile-stock img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.tuile-stock:hover img{transform:scale(1.05)}
+.tuile-stock .etag{position:absolute;top:12px;left:12px;background:var(--noir);color:var(--or);font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.tuile-stock .infos{padding:13px 16px;font-family:var(--sans);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.tuile-stock .marque-nom{font-weight:700;font-size:14px;color:var(--noir)}
+.tuile-stock .ref{font-size:12px;color:var(--gris);letter-spacing:.04em;text-align:right}
+@media (max-width:1020px){.grid-stock{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid-stock{grid-template-columns:repeat(2,1fr);gap:14px}}
+
+/* ---------- Atelier ---------- */
+.atelier{background:var(--noir);color:var(--blanc)}
+.atelier .sec-head h2{color:var(--blanc)}
+.atelier .sec-head .note{color:#b9b9b9}
+.atelier-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.atelier-imgs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.atelier-imgs figure{border-radius:20px;overflow:hidden}
+.atelier-imgs figure:first-child{transform:translateY(28px)}
+.atelier-imgs img{height:420px;width:100%;object-fit:cover}
+.etapes{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.etape{display:flex;gap:22px;padding:26px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.etape:last-child{border-bottom:0}
+.etape .num{font-family:var(--serif);font-size:30px;color:var(--or);min-width:52px;line-height:1.1}
+.etape h3{font-family:var(--sans);font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.etape p{font-size:15.5px;color:#cfcfcf}
+.conseil{margin-top:34px;background:rgba(211,176,58,.12);border:1px solid rgba(211,176,58,.45);border-radius:20px;padding:24px 28px}
+.conseil .titre{font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--or);margin-bottom:8px}
+.conseil p{font-size:15.5px;color:#e8e8e8}
+
+/* ---------- Journal / ligne éditoriale ---------- */
+.journal{background:var(--creme)}
+.feed{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tuile{background:var(--blanc);border-radius:18px;overflow:hidden;box-shadow:0 18px 40px -26px rgba(12,12,12,.3);transition:transform .3s}
+.tuile:hover{transform:translateY(-5px)}
+.tuile .visuel{aspect-ratio:1;overflow:hidden}
+.tuile img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.tuile:hover img{transform:scale(1.05)}
+.tuile .meta{padding:14px 16px;font-family:var(--sans)}
+.tuile .type{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or-fonce);margin-bottom:4px}
+.tuile .legende{font-size:13.5px;color:var(--gris);line-height:1.45}
+.disclaimer{margin-top:30px;text-align:center;font-family:var(--sans);font-size:13px;color:var(--gris);font-style:italic}
+
+/* ---------- Infos & RDV ---------- */
+.rdv{background:var(--blanc)}
+.rdv-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.info-card{background:var(--creme);border-radius:26px;padding:44px;position:relative;overflow:hidden}
+.info-card::before{content:'';position:absolute;top:-90px;right:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(211,176,58,.22),transparent 70%)}
+.info-card h3{font-size:28px;font-weight:400;color:var(--noir);margin-bottom:22px}
+.info-lignes{display:flex;flex-direction:column;gap:16px;font-size:16.5px}
+.info-lignes .ligne{display:flex;gap:14px;align-items:flex-start}
+.info-lignes .ico{font-family:var(--sans);font-weight:700;color:var(--or-fonce);min-width:78px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding-top:4px}
+.metro-badges{display:inline-flex;gap:8px}
+.metro-row{display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap}
+.metro-row .sep{font-style:normal;color:var(--gris-clair)}
+.metro-badges span{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;font-size:14px;color:#fff}
+.m8{background:#ceadd2;color:#333}.m9{background:#cec200}.m3{background:#a48e0e}
+.rdv-form{background:var(--noir);color:var(--blanc);border-radius:26px;padding:44px}
+.rdv-form h3{font-size:28px;font-weight:400;margin-bottom:10px}
+.rdv-form p{color:#c9c9c9;font-size:15.5px;margin-bottom:30px}
+.champ{margin-bottom:18px}
+.champ label{display:block;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:7px}
+.champ input,.champ select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:13px 16px;color:var(--blanc);font-family:var(--serif);font-size:16px;outline:none;transition:border .25s}
+.champ input:focus,.champ select:focus{border-color:var(--or)}
+.champ select option{color:var(--encre)}
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-plein{width:100%;justify-content:center;margin-top:8px;border:0;cursor:pointer;font-size:15px;padding:16px}
+.rdv-alt{margin-top:18px;text-align:center;font-family:var(--sans);font-size:13.5px;color:#b9b9b9}
+.rdv-alt a{color:var(--or);font-weight:700}
+
+/* ---------- Footer ---------- */
+footer{background:var(--noir);color:#a9a9a9;border-top:3px solid var(--or);padding:56px 24px 34px;font-family:var(--sans);font-size:13.5px}
+.footer-inner{max-width:1240px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+.footer-top img{height:26px;filter:invert(1);opacity:.9}
+.footer-col b{display:block;color:var(--blanc);letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:12px}
+.footer-col a{display:block;color:#a9a9a9;padding:3px 0;transition:color .2s}
+.footer-col a:hover{color:var(--or)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#7d7d7d;font-size:12.5px}
+
+@media (max-width:1020px){
+  .hero-inner,.atelier-grid,.rdv-grid{grid-template-columns:1fr;gap:48px}
+  .hero-figure img{height:440px}
+  .c-large{grid-column:span 12;min-height:420px}
+  .c-mid,.c-mid2,.c-band,.c-band2{grid-column:span 6;min-height:260px}
+  .feed{grid-template-columns:repeat(2,1fr)}
+  nav{display:none}
+}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  .topbar-inner{padding:8px 14px;font-size:11.5px;justify-content:center;text-align:center}
+  .header-inner{padding:12px 16px;gap:12px}
+  .logo img{height:24px}
+  header .cta{padding:10px 16px;font-size:11.5px;letter-spacing:.03em}
+  .c-mid,.c-mid2,.c-band,.c-band2{grid-column:span 12}
+  .feed{grid-template-columns:1fr}
+  .deux{grid-template-columns:1fr}
+  section{padding:64px 18px}
+  .hero-inner{padding:56px 18px 72px}
+  .hero h1{font-size:33px}
+  .hero p.lede{font-size:16.5px}
+  .hero-figure img{height:380px}
+  .hero-badge{left:0;bottom:14px;padding:14px 18px}
+  .info-card,.rdv-form{padding:30px 24px}
+  .atelier-imgs img{height:280px}
+  .sec-head h2{font-size:27px}
+  .grid-createurs{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- Barre haute -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span><span class="dot"></span> 75-70 rue Montmartre, Paris 2<sup>e</sup> — M° Grands Boulevards</span>
+    <span><b>Lun–Sam</b> 10h30 – 19h30 &nbsp;·&nbsp; <b>01 42 60 91 57</b></span>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#"><img src="assets/logo-eyeshow-noir.png" alt="Eyeshow — optic for people"></a>
+    <nav>
+      <a href="#createurs">Les créateurs</a>
+      <a href="#stock">En boutique</a>
+      <a href="#atelier">L'atelier</a>
+      <a href="#journal">Le journal</a>
+      <a href="#rdv">La boutique</a>
+    </nav>
+    <a class="cta" href="#rdv">Prendre rendez-vous</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker">Eyeshow Paris 2 · Rue Montmartre</div>
+      <h1>L'optique créateur,<br>au cœur du Paris <em>qui ose.</em></h1>
+      <p class="lede">Entre Bourse et Montorgueil, la boutique Eyeshow du 2<sup>e</sup> arrondissement sélectionne des montures de créateurs qu'on ne trouve pas ailleurs — et les monte sur place, dans son atelier.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#rdv">Prendre rendez-vous</a>
+        <a class="cta ghost" href="#createurs">Voir la sélection</a>
+      </div>
+    </div>
+    <div class="hero-figure">
+      <div class="frame"><img src="assets/hero-boutique-3.jpeg" alt="Monture dorée tenue en main, rue parisienne en arrière-plan"></div>
+      <div class="hero-badge">
+        <span class="big">Montée dans l'heure</span>
+        <span class="small">Atelier &amp; stock de verres sur place</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Marquee marques -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Tom Ford <i>◆</i> Matsuda <i>◆</i> Lindberg <i>◆</i> John Dalia <i>◆</i> Fred <i>◆</i> Cartier <i>◆</i> Theo <i>◆</i> Sabine Be <i>◆</i> Thierry Lasry <i>◆</i> Chloé <i>◆</i> Celine <i>◆</i> Loewe <i>◆</i> Oliver Peoples <i>◆</i> Burberry <i>◆</i> Oakley <i>◆</i> Versace <i>◆</i> Miu Miu <i>◆</i> Prada <i>◆</i></span>
+    <span>Tom Ford <i>◆</i> Matsuda <i>◆</i> Lindberg <i>◆</i> John Dalia <i>◆</i> Fred <i>◆</i> Cartier <i>◆</i> Theo <i>◆</i> Sabine Be <i>◆</i> Thierry Lasry <i>◆</i> Chloé <i>◆</i> Celine <i>◆</i> Loewe <i>◆</i> Oliver Peoples <i>◆</i> Burberry <i>◆</i> Oakley <i>◆</i> Versace <i>◆</i> Miu Miu <i>◆</i> Prada <i>◆</i></span>
+  </div>
+</div>
+
+<!-- Créateurs -->
+<section class="createurs" id="createurs">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">La sélection de la boutique</div>
+        <h2>Les créateurs <em>du moment</em></h2>
+      </div>
+      <p class="note">Chaque boutique Eyeshow choisit ses propres créateurs. À Montmartre : des montures différenciantes, des <b>avant-premières</b> et des <b>capsules exclusives</b> réservées par les maisons.</p>
+    </div>
+    <div class="grid-createurs">
+      <figure class="card c-large">
+        <img src="assets/marque-john-dalia.webp" alt="Monture solaire géométrique noire John Dalia portée">
+        <span class="tag">Créateur parisien</span>
+        <figcaption class="label"><span class="nom">John Dalia</span><br><span class="detail">Solaire · Édition limitée</span></figcaption>
+      </figure>
+      <figure class="card c-mid">
+        <img src="assets/marque-matsuda.png" alt="Monture ronde métal Matsuda posée">
+        <figcaption class="label"><span class="nom">Matsuda</span><br><span class="detail">Japon · Titane &amp; acétate</span></figcaption>
+      </figure>
+      <figure class="card c-mid2">
+        <img src="assets/marque-lindberg.png" alt="Monture fine dorée Lindberg portée">
+        <figcaption class="label"><span class="nom">Lindberg</span><br><span class="detail">Danemark · Ultra-léger</span></figcaption>
+      </figure>
+      <figure class="card c-mid2">
+        <img src="assets/marque-sabinebe.jpeg" alt="Monture crème et écaille Sabine Be">
+        <figcaption class="label"><span class="nom">Sabine Be</span><br><span class="detail">Fabriqué en France</span></figcaption>
+      </figure>
+      <figure class="card c-mid2">
+        <img src="assets/marque-thierry-lasry.jpeg" alt="Solaire sculpturale Thierry Lasry portée">
+        <figcaption class="label"><span class="nom">Thierry Lasry</span><br><span class="detail">Solaire · Sculpturale</span></figcaption>
+      </figure>
+      <figure class="card c-band">
+        <img src="assets/marque-oliver-peoples.jpg" alt="Collaboration Oliver Peoples x Roger Federer">
+        <span class="tag">Collaboration</span>
+        <figcaption class="label"><span class="nom">Oliver Peoples × Roger Federer</span><br><span class="detail">Solaire · Série RF</span></figcaption>
+      </figure>
+      <figure class="card c-band2">
+        <img src="assets/marque-tomford.png" alt="Solaire oversize noire Tom Ford portée">
+        <figcaption class="label"><span class="nom">Tom Ford</span><br><span class="detail">Solaire · Icône</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- En boutique cette semaine — vitrine connectée au stock -->
+<section class="stock" id="stock">
+  <div class="wrap">
+    <div class="stock-head">
+      <div>
+        <div class="kicker">La vitrine vivante</div>
+        <h2>En boutique <em>cette semaine</em></h2>
+      </div>
+      <div>
+        <span class="badge-sync"><span class="pulse"></span> Mis à jour automatiquement</span>
+        <p class="stock-note" style="margin-top:14px">Chaque arrivage et chaque retour en stock alimente cette vitrine — puis les réseaux de la boutique. Le site reflète ce qui est réellement à essayer au 70 rue Montmartre.</p>
+      </div>
+    </div>
+    <div class="grid-stock">
+      <article class="tuile-stock">
+        <span class="etag">Arrivage</span>
+        <div class="visuel"><img src="assets/marque-miumiu.jpg" alt="Solaire Miu Miu MU 10Z à verres teintés"></div>
+        <div class="infos"><span class="marque-nom">Miu Miu</span><span class="ref">MU 10Z · solaire</span></div>
+      </article>
+      <article class="tuile-stock">
+        <span class="etag">Arrivage</span>
+        <div class="visuel"><img src="assets/marque-oakley-mbappe.jpg" alt="Oakley HSTN RX signature Kylian Mbappé"></div>
+        <div class="infos"><span class="marque-nom">Oakley</span><span class="ref">HSTN RX · optique</span></div>
+      </article>
+      <article class="tuile-stock">
+        <div class="visuel"><img src="assets/marque-versace.jpg" alt="Monture optique Versace VE3354"></div>
+        <div class="infos"><span class="marque-nom">Versace</span><span class="ref">VE3354 · optique</span></div>
+      </article>
+      <article class="tuile-stock">
+        <div class="visuel"><img src="assets/marque-prada.jpg" alt="Solaire Prada PR A16 noire"></div>
+        <div class="infos"><span class="marque-nom">Prada</span><span class="ref">PR A16 · solaire</span></div>
+      </article>
+      <article class="tuile-stock">
+        <div class="visuel"><img src="assets/marque-oliver-peoples.jpg" alt="Oliver Peoples OV5553SU, série Roger Federer"></div>
+        <div class="infos"><span class="marque-nom">Oliver Peoples</span><span class="ref">OV5553SU × RF · solaire</span></div>
+      </article>
+      <article class="tuile-stock">
+        <div class="visuel"><img src="assets/marque-burberry.jpg" alt="Solaire Burberry BE4425U"></div>
+        <div class="infos"><span class="marque-nom">Burberry</span><span class="ref">BE4425U · solaire</span></div>
+      </article>
+      <article class="tuile-stock">
+        <div class="visuel"><img src="assets/marque-matsuda.png" alt="Monture ronde Matsuda en titane"></div>
+        <div class="infos"><span class="marque-nom">Matsuda</span><span class="ref">titane · optique</span></div>
+      </article>
+      <article class="tuile-stock">
+        <div class="visuel"><img src="assets/marque-sabinebe.jpeg" alt="Solaire Sabine Be, ligne Be Idol, fabriquée en France"></div>
+        <div class="infos"><span class="marque-nom">Sabine Be</span><span class="ref">Be Idol Sun · solaire</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Atelier -->
+<section class="atelier" id="atelier">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Le différenciateur Eyeshow</div>
+        <h2>L'atelier <em>sur place</em></h2>
+      </div>
+      <p class="note">Un vrai atelier dans la boutique, pas un envoi en sous-traitance. C'est la promesse historique de l'enseigne — à Montmartre, elle se vit au comptoir.</p>
+    </div>
+    <div class="atelier-grid">
+      <div class="atelier-imgs">
+        <figure><img src="assets/atelier-1.jpg" alt="Plans techniques de montures et branches en atelier"></figure>
+        <figure><img src="assets/atelier-2.jpg" alt="Perçage d'une monture en acétate à l'atelier"></figure>
+      </div>
+      <div>
+        <div class="etapes">
+          <div class="etape">
+            <div class="num">01</div>
+            <div>
+              <h3>Verres en stock</h3>
+              <p>La boutique stocke les verres des corrections les plus courantes — pas d'attente fournisseur pour la majorité des ordonnances.</p>
+            </div>
+          </div>
+          <div class="etape">
+            <div class="num">02</div>
+            <div>
+              <h3>Montage à l'atelier</h3>
+              <p>Détourage, montage et réglage de votre monture sont réalisés sur place, par les opticiens de la boutique.</p>
+            </div>
+          </div>
+          <div class="etape">
+            <div class="num">03</div>
+            <div>
+              <h3>Prête dans l'heure</h3>
+              <p>Choisie le matin, portée le midi : pour la plupart des corrections, vos lunettes sont livrées dans l'heure.</p>
+            </div>
+          </div>
+        </div>
+        <div class="conseil">
+          <div class="titre">Et aussi — le conseil qui fait la différence</div>
+          <p>Conseil morphologique à l'essayage — forme du visage, usage, style —, ajustage de confort et réparations courantes réalisées directement en boutique. Verres Essilor, dont les progressifs Varilux, disponibles sur ordonnance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Journal / ligne éditoriale -->
+<section class="journal" id="journal">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Le journal de la boutique</div>
+        <h2>Montmartre, <em>en stories</em></h2>
+      </div>
+      <p class="note">La vie de la boutique racontée au fil des semaines : arrivages, coulisses d'atelier, conseils d'opticiens, visages du quartier.</p>
+    </div>
+    <div class="feed">
+      <article class="tuile">
+        <div class="visuel"><img src="assets/marque-versace.jpg" alt="Campagne Versace — Dwyane Wade"></div>
+        <div class="meta"><div class="type">Arrivage</div><div class="legende">Versace VE3354 — la monture vue par Dwyane Wade, à essayer en boutique cette semaine.</div></div>
+      </article>
+      <article class="tuile">
+        <div class="visuel"><img src="assets/atelier-2.jpg" alt="Travail de la monture à l'atelier"></div>
+        <div class="meta"><div class="type">Coulisses d'atelier</div><div class="legende">Perçage, chanfrein, polissage : ce qui se passe derrière le comptoir pendant que vous prenez un café rue Montmartre.</div></div>
+      </article>
+      <article class="tuile">
+        <div class="visuel"><img src="assets/marque-oakley-mbappe.jpg" alt="Oakley HSTN RX — Kylian Mbappé"></div>
+        <div class="meta"><div class="type">Vu sur</div><div class="legende">La HSTN RX signature de Kylian Mbappé : Oakley prouve que le verre correcteur est un accessoire de style.</div></div>
+      </article>
+      <article class="tuile">
+        <div class="visuel"><img src="assets/marque-miumiu.jpg" alt="Solaire Miu Miu teintée"></div>
+        <div class="meta"><div class="type">Nouveauté</div><div class="legende">Miu Miu MU10Z : le verre teinté caramel qui relève toutes les tenues de rentrée.</div></div>
+      </article>
+      <article class="tuile">
+        <div class="visuel"><img src="assets/hero-boutique-1.jpeg" alt="Portrait solaire dorée, esprit vintage"></div>
+        <div class="meta"><div class="type">POV boutique</div><div class="legende">L'essayage du samedi : trois paires, une hésitation, un café — comme chaque week-end au 70 rue Montmartre.</div></div>
+      </article>
+      <article class="tuile">
+        <div class="visuel"><img src="assets/marque-prada.jpg" alt="Solaire Prada portée"></div>
+        <div class="meta"><div class="type">Éducation optique</div><div class="legende">Solaire à votre vue ? Oui — la plupart des montures de la boutique peuvent recevoir des verres correcteurs teintés.</div></div>
+      </article>
+    </div>
+    <p class="disclaimer">Aperçu concept — proposition de ligne éditoriale pour le futur compte de la boutique. Visuels issus des marques vendues chez Eyeshow.</p>
+  </div>
+</section>
+
+<!-- Infos & RDV -->
+<section class="rdv" id="rdv">
+  <div class="wrap">
+    <div class="rdv-grid">
+      <div class="info-card">
+        <div class="kicker">La boutique</div>
+        <h3>Eyeshow Paris 2</h3>
+        <div class="info-lignes">
+          <div class="ligne"><span class="ico">Adresse</span><span>75-70 rue Montmartre<br>75002 Paris</span></div>
+          <div class="ligne"><span class="ico">Métro</span><span class="metro-row"><span class="metro-badges"><span class="m8">8</span><span class="m9">9</span></span> Grands Boulevards <i class="sep">·</i> <span class="metro-badges"><span class="m3">3</span></span> Sentier</span></div>
+          <div class="ligne"><span class="ico">Horaires</span><span>Lundi – samedi<br>10h30 – 19h30</span></div>
+          <div class="ligne"><span class="ico">Téléphone</span><span><a href="tel:+33142609157"><b>01 42 60 91 57</b></a></span></div>
+          <div class="ligne"><span class="ico">Email</span><span><a href="mailto:paris2@eyeshow.fr">paris2@eyeshow.fr</a></span></div>
+        </div>
+      </div>
+      <div class="rdv-form">
+        <h3>Prendre rendez-vous</h3>
+        <p>Essayage conseillé, renouvellement d'ordonnance ou simple ajustage : la boutique vous répond sous 24&nbsp;h ouvrées.</p>
+        <form action="mailto:paris2@eyeshow.fr" method="get">
+          <div class="deux">
+            <div class="champ"><label for="nom">Nom</label><input id="nom" type="text" placeholder="Votre nom"></div>
+            <div class="champ"><label for="tel">Téléphone</label><input id="tel" type="tel" placeholder="06 00 00 00 00"></div>
+          </div>
+          <div class="champ">
+            <label for="motif">Motif</label>
+            <select id="motif">
+              <option>Essayage &amp; conseil montures</option>
+              <option>Renouvellement avec ordonnance</option>
+              <option>Verres progressifs — bilan</option>
+              <option>Ajustage / réparation</option>
+            </select>
+          </div>
+          <button class="cta btn-plein" type="submit">Demander un créneau</button>
+        </form>
+        <p class="rdv-alt">Ou directement au <a href="tel:+33142609157">01 42 60 91 57</a> — réponse immédiate aux horaires d'ouverture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col" style="max-width:300px">
+        <img src="assets/logo-eyeshow-noir.png" alt="Eyeshow">
+        <p style="margin-top:16px">Opticien créateur — 7 boutiques en Île-de-France. Chaque boutique a son univers ; toutes partagent le même atelier et la même exigence.</p>
+      </div>
+      <div class="footer-col">
+        <b>Paris 2</b>
+        <a href="#createurs">Les créateurs</a>
+        <a href="#atelier">L'atelier</a>
+        <a href="#journal">Le journal</a>
+        <a href="#rdv">Rendez-vous</a>
+      </div>
+      <div class="footer-col">
+        <b>L'enseigne</b>
+        <a href="https://eyeshow.fr" rel="noopener">eyeshow.fr</a>
+        <a href="https://eyeshow.fr/les-magasins/" rel="noopener">Les 7 magasins</a>
+        <a href="https://instagram.com/eyeshow.optic.for.people" rel="noopener">Instagram</a>
+      </div>
+      <div class="footer-col">
+        <b>Autres boutiques</b>
+        <a href="#">Paris 4 · Le Marais</a>
+        <a href="#">Paris 6 · Rennes</a>
+        <a href="#">Rosny 2</a>
+        <a href="#">Boulogne · Les Passages</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© Eyeshow Paris 2 — 75-70 rue Montmartre, 75002 Paris</span>
+      <span>Maquette concept « un site par magasin » — 07/08/2026 · Structure duplicable aux autres boutiques</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

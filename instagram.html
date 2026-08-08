@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulation Instagram — Eyeshow Paris 2 (concept)</title>
+<link rel="icon" href="assets/favicon-32.jpg">
+<style>
+@font-face{font-family:'Antic Slab';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/AnticSlab-400.woff2') format('woff2');}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/PTSans-400.woff2') format('woff2');}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/PTSans-700.woff2') format('woff2');}
+:root{
+  --or:#d3b03a; --or-fonce:#b39630; --or-pale:#f6efdb;
+  --encre:#333333; --noir:#0c0c0c; --gris:#46494a; --gris-clair:#bebdbd;
+  --blanc:#ffffff; --creme:#fbf9f4;
+  --serif:'Antic Slab',Georgia,serif; --sans:'PT Sans',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--serif);color:var(--encre);background:var(--blanc);line-height:1.6;font-size:16.5px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--or);color:var(--noir)}
+
+/* ---------- Bandeau simulation ---------- */
+.bandeau-simu{background:var(--or);color:var(--noir);font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;text-align:center;padding:9px 16px}
+.bandeau-simu b{font-weight:700}
+
+/* ---------- Header ---------- */
+header{background:var(--noir);padding:22px 24px}
+.header-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.header-inner img{height:28px;filter:invert(1)}
+.header-inner .doc{font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a}
+.header-inner .doc b{color:var(--or)}
+
+/* ---------- Intro ---------- */
+.intro{background:var(--creme);padding:76px 24px 70px;text-align:center}
+.intro .kicker{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--or-fonce);margin-bottom:20px}
+.intro h1{font-size:clamp(32px,4vw,52px);font-weight:400;color:var(--noir);line-height:1.15;max-width:820px;margin:0 auto 18px}
+.intro h1 em{font-style:italic;color:var(--or-fonce)}
+.intro p{max-width:640px;margin:0 auto 30px;color:var(--gris);font-size:17.5px}
+.chips{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.chip{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--or);color:var(--or-fonce);border-radius:999px;padding:8px 18px;background:var(--blanc)}
+
+/* ---------- Profil simulé ---------- */
+.profil-zone{background:var(--blanc);padding:90px 24px}
+.zone-titre{max-width:1180px;margin:0 auto 46px;display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
+.zone-titre h2{font-size:clamp(28px,3vw,40px);font-weight:400;color:var(--noir);line-height:1.2}
+.zone-titre h2 em{font-style:italic;color:var(--or-fonce)}
+.zone-titre .note{font-family:var(--sans);font-size:13.5px;color:var(--gris);max-width:380px}
+
+.phone{max-width:460px;margin:0 auto;background:var(--blanc);border:1px solid #e8e4d8;border-radius:34px;box-shadow:0 50px 100px -50px rgba(12,12,12,.35);overflow:hidden}
+.phone-top{padding:24px 24px 16px;border-bottom:1px solid #f0ede2}
+.profil-ligne{display:flex;align-items:center;gap:20px}
+.avatar{width:78px;height:78px;border-radius:50%;background:var(--noir);color:var(--or);display:flex;align-items:center;justify-content:center;font-size:38px;flex:none;border:2px solid var(--or)}
+.profil-id .pseudo{font-family:var(--sans);font-weight:700;font-size:17px;color:var(--noir)}
+.profil-id .statut{display:inline-block;margin-top:5px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--or-pale);color:var(--or-fonce);border-radius:999px;padding:4px 12px}
+.profil-nom{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--noir);margin-top:16px}
+.profil-bio{font-family:var(--sans);font-size:13.5px;color:var(--gris);margin-top:4px;line-height:1.55}
+.profil-bio b{color:var(--noir)}
+
+.highlights{display:flex;gap:20px;padding:18px 24px 6px;justify-content:flex-start}
+.hl{text-align:center;width:74px;flex:none}
+.hl .rond{width:62px;height:62px;border-radius:50%;overflow:hidden;border:2px solid var(--or);padding:2px;background:var(--blanc)}
+.hl .rond img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.hl .lbl{font-family:var(--sans);font-size:11px;color:var(--gris);margin-top:6px;letter-spacing:.02em}
+
+.grille-ig{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:18px 4px 4px}
+.post{position:relative;aspect-ratio:1;overflow:hidden;border-radius:4px;background:#f3f1ea}
+.post img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.post:hover img{transform:scale(1.05)}
+.post .cat{position:absolute;left:7px;bottom:7px;background:rgba(12,12,12,.82);color:var(--or);font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px}
+.post.txt{background:var(--noir);display:flex;flex-direction:column;justify-content:center;padding:14px;gap:8px}
+.post.txt .q{font-size:15px;color:var(--blanc);line-height:1.35}
+.post.txt .q em{color:var(--or);font-style:italic}
+.post.txt .t{font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
+.post .play{position:absolute;top:7px;right:7px;width:22px;height:22px;border-radius:50%;background:rgba(12,12,12,.82);display:flex;align-items:center;justify-content:center}
+.post .play::after{content:'';border-left:7px solid var(--or);border-top:4.5px solid transparent;border-bottom:4.5px solid transparent;margin-left:2px}
+.legende-simu{max-width:460px;margin:18px auto 0;text-align:center;font-family:var(--sans);font-size:12.5px;color:var(--gris-clair);font-style:italic}
+
+/* ---------- Concepts vidéo POV ---------- */
+.videos{background:var(--noir);color:var(--blanc);padding:96px 24px}
+.videos .zone-titre h2{color:var(--blanc)}
+.videos .zone-titre .note{color:#b9b9b9}
+.concepts{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.concept{background:rgba(255,255,255,.045);border:1px solid rgba(211,176,58,.28);border-radius:24px;padding:30px;transition:border .3s}
+.concept:hover{border-color:rgba(211,176,58,.6)}
+.concept .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px}
+.concept h3{font-size:23px;font-weight:400;color:var(--blanc);line-height:1.25}
+.concept .duree{flex:none;font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--or);color:var(--noir);border-radius:999px;padding:6px 14px}
+.concept .hook{font-family:var(--sans);font-size:14px;color:var(--or);margin-bottom:20px;font-style:italic}
+.storyboard{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.plan{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/5;background:#1a1a1a}
+.plan img{width:100%;height:100%;object-fit:cover;opacity:.92}
+.plan .etape{position:absolute;left:0;right:0;bottom:0;padding:60px 10px 9px;background:linear-gradient(rgba(12,12,12,0) 0%,rgba(12,12,12,.72) 45%,rgba(12,12,12,.95) 100%);font-family:var(--sans);font-size:11px;line-height:1.35;color:#f0f0f0;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.plan .etape b{display:block;color:var(--or);font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px}
+.concept .voit{font-family:var(--sans);font-size:13.5px;color:#cfcfcf;margin-bottom:12px;line-height:1.5}
+.concept .voit b{color:var(--blanc)}
+.concept .pourquoi{font-family:var(--sans);font-size:13px;border-top:1px solid rgba(255,255,255,.12);padding-top:12px;color:#a9a9a9}
+.concept .pourquoi b{color:var(--or);letter-spacing:.1em;text-transform:uppercase;font-size:11px;margin-right:8px}
+
+/* ---------- Stories ---------- */
+.stories{background:var(--blanc);padding:96px 24px}
+.stories-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.story-card{background:var(--creme);border-radius:24px;padding:26px;box-shadow:0 20px 44px -30px rgba(12,12,12,.28)}
+.story-card h3{font-size:21px;font-weight:400;color:var(--noir);margin-bottom:6px}
+.story-card .cadence{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or-fonce);margin-bottom:16px}
+.story-card p{font-family:var(--sans);font-size:13.5px;color:var(--gris);margin-top:16px;line-height:1.55}
+.story-mock{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:9/16;max-height:340px;margin:0 auto;max-width:220px}
+.story-mock img{width:100%;height:100%;object-fit:cover}
+.story-mock .overlay{position:absolute;inset:0;background:linear-gradient(rgba(12,12,12,.05),rgba(12,12,12,.55));display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:9px}
+.sondage{display:flex;gap:8px}
+.sondage span{flex:1;text-align:center;background:rgba(255,255,255,.94);border-radius:999px;font-family:var(--sans);font-weight:700;font-size:12px;color:var(--noir);padding:8px 0;border:2px solid var(--or)}
+.question-box{background:rgba(255,255,255,.96);border-radius:14px;padding:11px 13px;font-family:var(--sans);font-size:12.5px;color:var(--noir);line-height:1.4;border-left:3px solid var(--or)}
+.question-box b{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--or-fonce);margin-bottom:3px}
+.story-titre-ui{position:absolute;top:10px;left:10px;max-width:calc(100% - 20px);font-family:var(--sans);font-weight:700;font-size:12px;color:var(--blanc);background:rgba(12,12,12,.78);border-radius:10px;padding:7px 11px}
+
+/* ---------- Éducation ---------- */
+.education{background:var(--creme);padding:96px 24px}
+.edu-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.edu-card{background:var(--blanc);border-radius:24px;padding:36px;box-shadow:0 20px 44px -30px rgba(12,12,12,.25)}
+.edu-card .format{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or-fonce);margin-bottom:10px}
+.edu-card h3{font-size:26px;font-weight:400;color:var(--noir);margin-bottom:14px}
+.edu-card p{font-family:var(--sans);font-size:14px;color:var(--gris);margin-bottom:20px;line-height:1.6}
+.episodes{display:flex;flex-direction:column;gap:0}
+.episode{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid #eee9d8;font-family:var(--sans);font-size:13.5px;color:var(--encre)}
+.episode .n{font-family:var(--serif);color:var(--or-fonce);font-size:17px;min-width:30px}
+
+/* ---------- Footer ---------- */
+footer{background:var(--noir);color:#a9a9a9;border-top:3px solid var(--or);padding:44px 24px;font-family:var(--sans);font-size:13px}
+.footer-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer img{height:24px;filter:invert(1);opacity:.9}
+footer .mention{color:#7d7d7d;font-size:12.5px;max-width:560px;line-height:1.6}
+
+@media (max-width:1020px){
+  .concepts{grid-template-columns:1fr}
+  .stories-grid{grid-template-columns:1fr;max-width:520px}
+  .edu-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .intro{padding:56px 18px}
+  .profil-zone,.videos,.stories,.education{padding:64px 16px}
+  .storyboard{gap:7px}
+  .plan .etape{font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="bandeau-simu">Simulation — concept &nbsp;·&nbsp; compte à créer &nbsp;·&nbsp; aucun chiffre réel affiché</div>
+
+<header>
+  <div class="header-inner">
+    <img src="assets/logo-eyeshow-noir.png" alt="Eyeshow — optic for people">
+    <span class="doc">Ligne éditoriale Instagram · <b>Eyeshow Paris 2</b> · 07/08/2026</span>
+  </div>
+</header>
+
+<!-- Intro -->
+<section class="intro">
+  <div class="kicker">Simulation · réseaux de la boutique</div>
+  <h1>Le compte Instagram<br>d'<em>Eyeshow Paris 2</em></h1>
+  <p>Le magasin a les montures, l'atelier et le quartier — il ne lui manque que la vitrine sociale. Voici le compte tel qu'il pourrait exister : une simulation complète, sans un seul chiffre inventé.</p>
+  <div class="chips">
+    <span class="chip">Compte à créer</span>
+    <span class="chip">Zéro faux abonné</span>
+    <span class="chip">Charte enseigne</span>
+    <span class="chip">Contenu 100 % boutique</span>
+  </div>
+</section>
+
+<!-- Profil simulé -->
+<section class="profil-zone">
+  <div class="zone-titre">
+    <h2>Le profil, <em>comme si</em></h2>
+    <p class="note">En-tête, stories à la une et grille de départ : douze publications qui installent le ton — arrivages, atelier, quartier, conseil.</p>
+  </div>
+
+  <div class="phone">
+    <div class="phone-top">
+      <div class="profil-ligne">
+        <div class="avatar">e</div>
+        <div class="profil-id">
+          <div class="pseudo">eyeshow.paris2</div>
+          <span class="statut">Simulation — compte à créer</span>
+        </div>
+      </div>
+      <div class="profil-nom">Eyeshow Paris 2 · Opticien créateur</div>
+      <div class="profil-bio">
+        Montures de créateurs choisies, montées ici — <b>70 rue Montmartre, Paris 2ᵉ</b><br>
+        Verres en stock · atelier sur place · prête dans l'heure<br>
+        RDV au <b>01 42 60 91 57</b>
+      </div>
+    </div>
+
+    <div class="highlights">
+      <div class="hl"><div class="rond"><img src="assets/marque-miumiu.jpg" alt="À la une Arrivages"></div><div class="lbl">Arrivages</div></div>
+      <div class="hl"><div class="rond"><img src="assets/atelier-2.jpg" alt="À la une Atelier"></div><div class="lbl">Atelier</div></div>
+      <div class="hl"><div class="rond"><img src="assets/marque-john-dalia.webp" alt="À la une Coups de cœur"></div><div class="lbl">Coups de cœur</div></div>
+      <div class="hl"><div class="rond"><img src="assets/hero-boutique-3.jpeg" alt="À la une Le quartier"></div><div class="lbl">Le quartier</div></div>
+    </div>
+
+    <div class="grille-ig">
+      <div class="post"><img src="assets/marque-versace.jpg" alt="Post arrivage Versace"><span class="cat">Arrivage</span></div>
+      <div class="post txt"><span class="t">Éducation</span><span class="q">« Visage rond, visage fin : <em>la forme qui vous habille</em> en 30 secondes »</span></div>
+      <div class="post"><img src="assets/atelier-2.jpg" alt="Post coulisses atelier"><span class="cat">Coulisses</span><span class="play"></span></div>
+      <div class="post"><img src="assets/marque-oakley-mbappe.jpg" alt="Post Oakley HSTN RX"><span class="cat">Vu sur</span></div>
+      <div class="post"><img src="assets/hero-boutique-3.jpeg" alt="Post quartier Montmartre"><span class="cat">Le quartier</span></div>
+      <div class="post"><img src="assets/marque-sabinebe.jpeg" alt="Post Sabine Be"><span class="cat">Produit</span></div>
+      <div class="post"><img src="assets/marque-thierry-lasry.jpeg" alt="Post coup de cœur Thierry Lasry"><span class="cat">Coup de cœur</span></div>
+      <div class="post txt"><span class="t">Sondage story</span><span class="q">« Écaille crème <em>ou</em> métal doré ? À vous de voter »</span></div>
+      <div class="post"><img src="assets/marque-john-dalia.webp" alt="Post John Dalia créateur parisien"><span class="cat">Créateur</span></div>
+      <div class="post"><img src="assets/atelier-1.jpg" alt="Post atelier montage"><span class="cat">Atelier</span><span class="play"></span></div>
+      <div class="post"><img src="assets/marque-miumiu.jpg" alt="Post nouveauté Miu Miu"><span class="cat">Nouveauté</span></div>
+      <div class="post"><img src="assets/hero-boutique-1.jpeg" alt="Post POV boutique"><span class="cat">POV boutique</span><span class="play"></span></div>
+    </div>
+  </div>
+  <p class="legende-simu">Simulation visuelle — les pastilles « play » marquent les formats vidéo ; aucune statistique n'est affichée, le compte n'existe pas encore.</p>
+</section>
+
+<!-- Concepts vidéo POV -->
+<section class="videos">
+  <div class="zone-titre" style="max-width:1180px;margin:0 auto 46px">
+    <h2>4 concepts vidéo <em>POV</em></h2>
+    <p class="note">Le cœur de la ligne éditoriale : des formats courts, tournés au téléphone, sans budget production. Chaque concept est un mini-storyboard en 3 plans.</p>
+  </div>
+  <div class="concepts">
+
+    <article class="concept">
+      <div class="top"><h3>1 · Une matinée en boutique, en POV</h3><span class="duree">20–30 s</span></div>
+      <p class="hook">Hook : « POV : tu ouvres la boutique du 2ᵉ à 10h30 »</p>
+      <div class="storyboard">
+        <div class="plan"><img src="assets/hero-boutique-3.jpeg" alt="Plan 1 — la rue"><div class="etape"><b>Plan 1 · 0–4 s</b>La rue qui s'éveille, la monture du jour à la main</div></div>
+        <div class="plan"><img src="assets/atelier-1.jpg" alt="Plan 2 — le comptoir"><div class="etape"><b>Plan 2 · 4–15 s</b>Préparer le comptoir, aligner les modèles du moment</div></div>
+        <div class="plan"><img src="assets/hero-boutique-1.jpeg" alt="Plan 3 — premier essayage"><div class="etape"><b>Plan 3 · 15–30 s</b>Premier client, premier essayage, premier café</div></div>
+      </div>
+      <p class="voit"><b>Ce qu'on y voit :</b> le rituel du matin filmé à hauteur d'opticien — lumières, présentoirs, rue Montmartre.</p>
+      <p class="pourquoi"><b>Pourquoi ça marche</b> l'humain derrière le comptoir crée l'attachement au quartier — c'est ce qu'aucune chaîne ne peut copier.</p>
+    </article>
+
+    <article class="concept">
+      <div class="top"><h3>2 · Unboxing d'un arrivage</h3><span class="duree">15–25 s</span></div>
+      <p class="hook">Hook : « Le carton vient d'arriver — on l'ouvre en direct »</p>
+      <div class="storyboard">
+        <div class="plan"><img src="assets/marque-matsuda.png" alt="Plan 1 — le colis"><div class="etape"><b>Plan 1 · 0–3 s</b>Le colis posé sur le comptoir, encore fermé</div></div>
+        <div class="plan"><img src="assets/marque-john-dalia.webp" alt="Plan 2 — la révélation"><div class="etape"><b>Plan 2 · 3–15 s</b>Déballage pièce par pièce, la révélation du modèle</div></div>
+        <div class="plan"><img src="assets/marque-thierry-lasry.jpeg" alt="Plan 3 — l'essayage"><div class="etape"><b>Plan 3 · 15–25 s</b>Premier essayage devant le miroir de la boutique</div></div>
+      </div>
+      <p class="voit"><b>Ce qu'on y voit :</b> un vrai carton, un vrai arrivage, une vraie réaction — tourné le jour même.</p>
+      <p class="pourquoi"><b>Pourquoi ça marche</b> le suspense du déballage retient jusqu'au bout, et chaque vidéo prouve que la vitrine en ligne suit le stock réel.</p>
+    </article>
+
+    <article class="concept">
+      <div class="top"><h3>3 · Le montage d'une paire à l'atelier</h3><span class="duree">≈ 30 s</span></div>
+      <p class="hook">Hook : « Ta paire, montée ici, dans l'heure »</p>
+      <div class="storyboard">
+        <div class="plan"><img src="assets/atelier-2.jpg" alt="Plan 1 — le geste"><div class="etape"><b>Plan 1 · 0–10 s</b>Le geste d'atelier en gros plan : perçage, montage</div></div>
+        <div class="plan"><img src="assets/atelier-1.jpg" alt="Plan 2 — la précision"><div class="etape"><b>Plan 2 · 10–20 s</b>Réglage, finitions, contrôle sur plan technique</div></div>
+        <div class="plan"><img src="assets/marque-lindberg.png" alt="Plan 3 — le résultat"><div class="etape"><b>Plan 3 · 20–30 s</b>La paire finie, remise en main propre au client</div></div>
+      </div>
+      <p class="voit"><b>Ce qu'on y voit :</b> les mains de l'opticien, les outils, la matière — puis la paire portée.</p>
+      <p class="pourquoi"><b>Pourquoi ça marche</b> le savoir-faire visible est l'argument qui bat les chaînes et le e-commerce, et l'atelier est au cœur de la promesse Eyeshow.</p>
+    </article>
+
+    <article class="concept">
+      <div class="top"><h3>4 · Le conseil morphologie en 30 secondes</h3><span class="duree">≈ 30 s</span></div>
+      <p class="hook">Hook : « Visage rond ? Voici les deux formes qui t'habillent »</p>
+      <div class="storyboard">
+        <div class="plan"><img src="assets/marque-versace.jpg" alt="Plan 1 — le visage"><div class="etape"><b>Plan 1 · 0–5 s</b>Face caméra : « on regarde la forme du visage »</div></div>
+        <div class="plan"><img src="assets/marque-celine.jpg" alt="Plan 2 — le choix"><div class="etape"><b>Plan 2 · 5–20 s</b>Deux montures opposées, essayées en alternance rapide</div></div>
+        <div class="plan"><img src="assets/marque-burberry.jpg" alt="Plan 3 — le verdict"><div class="etape"><b>Plan 3 · 20–30 s</b>Le verdict en une phrase, la paire retenue</div></div>
+      </div>
+      <p class="voit"><b>Ce qu'on y voit :</b> un opticien, un visage, deux montures — le conseil du comptoir rendu public.</p>
+      <p class="pourquoi"><b>Pourquoi ça marche</b> le contenu utile est sauvegardé et partagé — chaque épisode apporte une raison concrète de pousser la porte.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- Stories récurrentes -->
+<section class="stories">
+  <div class="zone-titre" style="max-width:1180px;margin:0 auto 46px">
+    <h2>3 stories <em>récurrentes</em></h2>
+    <p class="note">Des rendez-vous simples, tenables par une équipe de boutique : un format, un jour, zéro préparation lourde.</p>
+  </div>
+  <div class="stories-grid">
+
+    <article class="story-card">
+      <h3>« Quelle paire ? »</h3>
+      <div class="cadence">Sondage · chaque mardi</div>
+      <div class="story-mock">
+        <img src="assets/marque-sabinebe.jpeg" alt="Story sondage — monture A">
+        <div class="story-titre-ui">Cette semaine en boutique :</div>
+        <div class="overlay">
+          <div class="sondage"><span>Écaille crème</span><span>Métal doré</span></div>
+        </div>
+      </div>
+      <p>Deux montures réelles du stock, un vote en un tap. La paire gagnante est annoncée en story le lendemain — et mise en vitrine. L'abonné vote, la boutique montre son stock sans jamais « vendre ».</p>
+    </article>
+
+    <article class="story-card">
+      <h3>Coulisses d'arrivage</h3>
+      <div class="cadence">Réaction · à chaque livraison</div>
+      <div class="story-mock">
+        <img src="assets/marque-chloe.jpg" alt="Story coulisses arrivage">
+        <div class="story-titre-ui">Il vient d'arriver…</div>
+        <div class="overlay">
+          <div class="question-box"><b>Réagis</b>Vous la voyez portée comment ?</div>
+        </div>
+      </div>
+      <p>Le carton à peine ouvert, une photo, une question. Les réponses alimentent la conversation en message privé — le début de la relation client avant même la venue en boutique.</p>
+    </article>
+
+    <article class="story-card">
+      <h3>La question de la semaine</h3>
+      <div class="cadence">Boîte à questions · chaque vendredi</div>
+      <div class="story-mock">
+        <img src="assets/hero-boutique-2.jpeg" alt="Story question de la semaine">
+        <div class="story-titre-ui">Vendredi, on répond à tout :</div>
+        <div class="overlay">
+          <div class="question-box"><b>Pose ta question</b>« Puis-je mettre des verres correcteurs dans une solaire ? »</div>
+        </div>
+      </div>
+      <p>Les questions optique du quotidien, répondues face caméra par un opticien. Les meilleures deviennent des épisodes éducation du feed — la demande vient des clients, pas du marketing.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- Formats éducation -->
+<section class="education">
+  <div class="zone-titre" style="max-width:1180px;margin:0 auto 46px">
+    <h2>2 formats <em>éducation</em></h2>
+    <p class="note">L'expertise optique traduite en contenu simple. Objectif : être le compte qu'on garde, pas celui qu'on zappe.</p>
+  </div>
+  <div class="edu-grid">
+
+    <article class="edu-card">
+      <div class="format">Reel · toutes les deux semaines</div>
+      <h3>Verres, 60 secondes</h3>
+      <p>Un sujet de verre par épisode, expliqué au comptoir avec la démonstration sous les yeux. Le ton : celui d'un opticien qui répond à un client, pas d'un cours.</p>
+      <div class="episodes">
+        <div class="episode"><span class="n">Ép.1</span><span>« Progressif ou pas : comment on sait »</span></div>
+        <div class="episode"><span class="n">Ép.2</span><span>« L'antireflet, à quoi il sert vraiment »</span></div>
+        <div class="episode"><span class="n">Ép.3</span><span>« Verres amincis : la différence sur une forte correction »</span></div>
+        <div class="episode"><span class="n">Ép.4</span><span>« Solaire à votre vue : ce qui est possible »</span></div>
+      </div>
+    </article>
+
+    <article class="edu-card">
+      <div class="format">Reel · en alternance</div>
+      <h3>Morpho &amp; entretien, la minute</h3>
+      <p>Le conseil d'essayage et les gestes d'entretien, en formats très courts tournés entre deux clients. Chaque épisode se termine par « on vous montre en boutique ».</p>
+      <div class="episodes">
+        <div class="episode"><span class="n">Ép.1</span><span>« Quelle forme pour quel visage — la base en 3 règles »</span></div>
+        <div class="episode"><span class="n">Ép.2</span><span>« Nettoyer ses lunettes sans rayer les verres »</span></div>
+        <div class="episode"><span class="n">Ép.3</span><span>« Vos branches se desserrent ? Le réglage minute »</span></div>
+        <div class="episode"><span class="n">Ép.4</span><span>« Titane, acétate : ce que change la matière »</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <img src="assets/logo-eyeshow-noir.png" alt="Eyeshow">
+    <p class="mention">Simulation éditoriale — concept du 07/08/2026. Le compte « eyeshow.paris2 » n'existe pas : aucun abonné, aucune publication, aucune statistique réelle n'est représenté. Visuels issus des marques vendues chez Eyeshow (eyeshow.fr). Charte enseigne : or #d3b03a, Antic Slab.</p>
+  </div>
+</footer>
+
+</body>
+</html>
