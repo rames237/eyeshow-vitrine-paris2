@@ -222,6 +222,18 @@ footer{background:var(--noir);color:#a9a9a9;border-top:3px solid var(--or);paddi
   .sec-head h2{font-size:27px}
   .grid-createurs{gap:16px}
 }
+
+/* ---------- Barre de navigation dossier (retour + circulation entre maquettes) ---------- */
+.nav-dossier{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0c0c0c;border-top:2px solid #d3b03a;
+  font-family:'PT Sans',Arial,sans-serif;font-size:13px;letter-spacing:.06em;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 22px;padding:11px 14px}
+.nav-dossier a{color:#f6efdb;text-transform:uppercase;font-weight:700;padding:3px 2px;border-bottom:2px solid transparent;transition:color .15s}
+.nav-dossier a:hover{color:#d3b03a}
+.nav-dossier a.retour{color:#d3b03a}
+.nav-dossier a[aria-current="page"]{color:#d3b03a;border-bottom-color:#d3b03a}
+body{padding-bottom:62px}
+@media(max-width:520px){.nav-dossier{font-size:11.5px;gap:3px 14px;padding:9px 10px}body{padding-bottom:72px}}
+@media print{.nav-dossier{display:none}body{padding-bottom:0}}
 </style>
 </head>
 <body>
@@ -539,6 +551,12 @@ footer{background:var(--noir);color:#a9a9a9;border-top:3px solid var(--or);paddi
     </div>
   </div>
 </footer>
+
+<nav class="nav-dossier" aria-label="Navigation du dossier direction">
+  <a class="retour" href="dossier.html">← Retour au dossier</a>
+  <a href="index.html" aria-current="page">Site du magasin</a>
+  <a href="instagram.html">Compte Instagram</a>
+</nav>
 
 </body>
 </html>
