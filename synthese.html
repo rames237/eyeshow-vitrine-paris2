@@ -67,8 +67,11 @@ h2{font-size:clamp(23px,3.6vw,32px);margin-bottom:6px}
 .col.sol{background:#fdfaf0}
 .col.sol .t{color:var(--or-fonce)}
 .col b{color:var(--noir)}
-.plustard{background:var(--blanc);border:1px dashed var(--ligne);border-radius:5px;padding:15px 18px;font-size:14.5px;color:var(--gris)}
-.plustard b{color:var(--encre)}
+.socle{background:var(--or-pale);border:1px solid var(--or);border-radius:5px;padding:19px 20px;font-size:15px;line-height:1.5}
+.socle-t{font-family:var(--serif);font-size:20px;color:var(--noir);margin-bottom:9px}
+.socle b{color:var(--noir)}
+.socle .apres{margin-top:11px;padding-top:11px;border-top:1px solid var(--or);font-size:14px;color:var(--gris)}
+.socle .apres b{color:var(--encre)}
 
 /* ---- demande ---- */
 .demande{background:var(--noir);color:var(--blanc);border-radius:5px;padding:26px 22px}
@@ -184,7 +187,7 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
     </div>
     <p class="socle">En 4 jours. Sur 2 postes seulement.</p>
 
-    <div class="punch">Tout cela se fait à la main, chaque jour — sans que personne ne l'ait jamais décidé.</div>
+    <div class="punch">Tout cela se fait à la main, chaque jour — sans que personne ne l'ait jamais décidé.<br><span style="font-size:.82em;color:var(--gris)">Et ce n'est même pas ce qui prend le plus de temps.</span></div>
     <p class="inline-go">Ces chiffres sortent d'un relevé jour par jour, sur nos propres postes.
     <a href="dossier.html#preuve">Comment on les a obtenus &rarr;</a></p>
   </section>
@@ -192,7 +195,7 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
   <!-- ============ TABLEAU DE BORD ============ -->
   <section>
     <div class="slabel">Le tableau de bord</div>
-    <h2>Cinq chantiers</h2>
+    <h2>Six chantiers</h2>
     <p class="sous-h2">Ce qui existe déjà · ce qui coince · ce qu'on met en place.</p>
 
     <div class="fam">
@@ -213,7 +216,7 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
       <div class="cols">
         <div class="col"><div class="t">Aujourd'hui</div><p><b>Rien.</b> Pas de page magasin, pas de stock visible, blog inactif depuis 2021, lien Facebook qui pointe vers Boulogne.</p></div>
         <div class="col pb"><div class="t">Ce qui coince</div><p>«&nbsp;Vous avez un site pour voir les modèles&nbsp;?&nbsp;» — la question revient sans arrêt. <b>Le client repart sans repère.</b></p></div>
-        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un site branché sur le stock réel&nbsp;: chaque arrivage alimente la page, puis les réseaux.</p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un site branché sur le stock réel&nbsp;: chaque arrivage alimente la page, puis les réseaux. Côté vidéo, <b>Manel et Nataniel sont déjà volontaires</b> pour filmer en boutique.</p></div>
       </div>
       <div class="apercus">
         <a class="ap" href="index.html">
@@ -249,7 +252,7 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
       <div class="cols">
         <div class="col"><div class="t">Aujourd'hui</div><p>Tout passe par un poste fixe. On s'assoit avec le client devant l'écran.</p></div>
         <div class="col pb"><div class="t">Ce qui coince</div><p><b>20 à 90 minutes d'attente</b> d'un ordinateur libre. Pendant ce temps d'autres attendent — et certains partent sans rien dire.</p></div>
-        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Une tablette qui accueille et prépare le dossier en arrière-plan. <b>L'ordinateur ne sert plus qu'à finaliser.</b></p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p><b>Deux ou trois tablettes</b> qui accueillent et préparent le dossier en arrière-plan. L'ordinateur ne sert plus qu'à finaliser. On y note aussi, au fil de la vente, <b>ce qu'aime le client et ce qu'il fait</b> — plongée, sport, écran — de quoi lui proposer la bonne chose la fois suivante.</p></div>
       </div>
       <div class="pv">
         <div class="txt"><b>Ce que ça change pour vous</b>Des samedis qui finissent à l'heure.</div>
@@ -262,7 +265,7 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
       <div class="cols">
         <div class="col"><div class="t">Aujourd'hui</div><p>Un carnet papier. Et la prise en charge mutuelle <b>estimée de tête</b>, selon qui est au comptoir.</p></div>
         <div class="col pb"><div class="t">Ce qui coince</div><p>Le carnet ne dit rien à celui qui n'est pas là, et ne se souvient de rien tout seul. Les oublis sont silencieux.</p></div>
-        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un carnet partagé qui relance seul. Et une <b>base de fourchettes par mutuelle</b> construite sur nos remboursements réels.</p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un carnet partagé qui relance seul. Et une <b>base de fourchettes par mutuelle</b> construite sur nos remboursements réels — puis, plus tard, <b>la prise en charge pré-remplie pendant la vente</b>.</p></div>
       </div>
       <div class="pv">
         <div class="txt"><b>Ce que ça change pour vous</b>Voir ce qui attend dans le magasin, sans être dans le magasin.</div>
@@ -270,8 +273,28 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
       </div>
     </div>
 
-    <div class="plustard"><b>Deux autres chantiers viennent après</b> — la vie interne de l'équipe (paie, planning, heures)
-    et les promos &amp; publicité. Ils attendent que les cinq premiers tiennent.</div>
+    <div class="fam">
+      <div class="fam-h"><span class="fnum">6</span><h3>Les mails</h3><span class="badge">Mesuré</span></div>
+      <div class="cols">
+        <div class="col"><div class="t">Aujourd'hui</div><p>Tout passe par la boîte mail&nbsp;: envoyer les documents, répondre sur la disponibilité des lunettes, régler les problèmes de remboursement, lever les incompréhensions.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p><b>3&nbsp;h&nbsp;30 par jour, à deux postes</b> — un quart de tout le temps passé à l'écran. 755 allers-retours entre Cosium et la boîte mail, et 103 demandes de documents en 4 jours.</p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Les documents les plus demandés partent tout seuls. Des réponses prêtes pour les questions qui reviennent. Et <b>le client sait où en est sa commande sans avoir à écrire</b>.</p></div>
+      </div>
+      <div class="pv">
+        <div class="txt"><b>Ce que ça change pour vous</b>Le temps passé dans la boîte mail redescend — et il retourne au comptoir.</div>
+        <a class="go" href="dossier.html#annexe">Les chiffres en annexe &rarr;</a>
+      </div>
+    </div>
+
+    <div class="socle">
+      <div class="socle-t">Un socle commun aux six chantiers</div>
+      <p>Ces chantiers ne feront pas six outils. Ils tiennent dans <b>un seul endroit</b>, relié à Cosium&nbsp;:
+      <b>le carnet noir y devient numérique</b> — c'est le cœur du système, pas une annexe. Autour, le chiffre du
+      jour qui se met à jour tout seul (plus besoin de le refaire chaque soir), les notes prises pendant les ventes,
+      et au même endroit les <b>fiches de paie et le planning</b>.
+      Un employé y trouve sa journée&nbsp;; vous y trouvez le magasin, sans y être.</p>
+      <p class="apres"><b>Reste pour plus tard&nbsp;:</b> les promos et la publicité. Rien n'est en place aujourd'hui — ça se construira quand les six premiers tiendront.</p>
+    </div>
   </section>
 
   <!-- ============ DEMANDE ============ -->
