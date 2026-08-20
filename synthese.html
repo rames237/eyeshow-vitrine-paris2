@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyeshow Paris 2 — Synthèse direction (2 min)</title>
+<link rel="icon" href="assets/favicon-32.jpg">
+<style>
+@font-face{font-family:'Antic Slab';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/AnticSlab-400.woff2') format('woff2');}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/PTSans-400.woff2') format('woff2');}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/PTSans-700.woff2') format('woff2');}
+:root{
+  --or:#d3b03a; --or-fonce:#9a7c1c; --or-pale:#f6efdb;
+  --encre:#2c2c2c; --noir:#0c0c0c; --gris:#6b6e70; --ligne:#e6e0cf;
+  --blanc:#fff; --creme:#fbf9f4; --alerte:#a33a2a; --alerte-pale:#fbeeea;
+  --serif:'Antic Slab',Georgia,serif; --sans:'PT Sans',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);color:var(--encre);background:var(--creme);line-height:1.5;font-size:16px;-webkit-font-smoothing:antialiased;padding-bottom:62px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15}
+
+/* ---- bandeau ---- */
+.kicker{background:var(--noir);color:var(--or);font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:10px 16px}
+
+/* ---- hero ---- */
+.hero{padding:38px 0 26px;border-bottom:3px solid var(--noir)}
+.hero h1{font-size:clamp(30px,6vw,50px);letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--or-fonce)}
+.hero .sous{font-size:clamp(17px,2.4vw,20px);margin-top:14px;max-width:34em;color:var(--gris)}
+.hero .dest{margin-top:18px;font-size:15px}
+.hero .dest b{color:var(--noir)}
+.duree{display:inline-block;margin-top:16px;background:var(--or-pale);border:1px solid var(--or);
+  font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border-radius:99px}
+
+/* ---- sections ---- */
+section{padding:34px 0}
+.slabel{font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--or-fonce);margin-bottom:8px}
+h2{font-size:clamp(23px,3.6vw,32px);margin-bottom:6px}
+.sous-h2{color:var(--gris);font-size:15.5px;margin-bottom:22px}
+
+/* ---- chiffres ---- */
+.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px}
+.ch{background:var(--noir);color:var(--blanc);padding:20px 18px 18px;border-radius:4px}
+.ch .n{font-family:var(--serif);font-size:clamp(38px,6vw,50px);color:var(--or);line-height:1}
+.ch .l{font-size:14px;margin-top:9px;color:#dcd6c6;line-height:1.4}
+.socle{margin-top:14px;font-size:14.5px;color:var(--gris)}
+.punch{margin-top:22px;background:var(--or-pale);border-left:5px solid var(--or);
+  padding:18px 20px;font-family:var(--serif);font-size:clamp(18px,2.6vw,23px);line-height:1.35;border-radius:0 4px 4px 0}
+
+/* ---- tableau de bord ---- */
+.fam{background:var(--blanc);border:1px solid var(--ligne);border-radius:5px;margin-bottom:14px;overflow:hidden}
+.fam-h{display:flex;align-items:center;gap:12px;padding:15px 18px;background:#fdfcf8;border-bottom:1px solid var(--ligne);flex-wrap:wrap}
+.fnum{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--noir);color:var(--or);
+  font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.fam-h h3{flex:1 1 220px;font-size:19px}
+.badge{flex:0 0 auto;font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:99px;
+  background:var(--noir);color:var(--or)}
+.badge.dec{background:var(--blanc);color:var(--gris);border:1px solid var(--ligne)}
+.cols{display:grid;grid-template-columns:1fr 1fr 1fr}
+.col{padding:16px 18px;border-right:1px solid var(--ligne)}
+.col:last-child{border-right:0}
+.col .t{font-weight:700;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gris);margin-bottom:7px}
+.col p{font-size:14.5px;line-height:1.45}
+.col.pb{background:var(--alerte-pale)}
+.col.pb .t{color:var(--alerte)}
+.col.sol{background:#fdfaf0}
+.col.sol .t{color:var(--or-fonce)}
+.col b{color:var(--noir)}
+.plustard{background:var(--blanc);border:1px dashed var(--ligne);border-radius:5px;padding:15px 18px;font-size:14.5px;color:var(--gris)}
+.plustard b{color:var(--encre)}
+
+/* ---- demande ---- */
+.demande{background:var(--noir);color:var(--blanc);border-radius:5px;padding:26px 22px}
+.demande h2{color:var(--blanc);margin-bottom:18px}
+.demande h2 em{font-style:italic;color:var(--or)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.step{background:#17130a;border:1px solid #2e2716;border-radius:4px;padding:16px 16px 15px}
+.step .k{font-family:var(--serif);font-size:26px;color:var(--or);line-height:1}
+.step p{font-size:14.5px;margin-top:8px;color:#dcd6c6}
+.step b{color:var(--blanc)}
+.zero{margin-top:16px;background:var(--or);color:var(--noir);font-weight:700;text-align:center;
+  padding:13px;border-radius:4px;font-size:16px}
+
+/* ---- liens ---- */
+.liens{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:13px}
+.lien{display:block;background:var(--blanc);border:1px solid var(--ligne);border-left:5px solid var(--or);
+  border-radius:0 4px 4px 0;padding:17px 18px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.lien:hover{border-left-color:var(--noir);transform:translateY(-2px)}
+.lien .t{font-family:var(--serif);font-size:18px;color:var(--noir)}
+.lien .d{font-size:14px;color:var(--gris);margin-top:5px}
+.lien .u{font-size:12px;color:var(--or-fonce);margin-top:8px;word-break:break-all}
+
+/* ---- legende / pied ---- */
+.legende{margin-top:26px;background:var(--blanc);border:1px solid var(--ligne);border-radius:5px;padding:16px 18px;font-size:14px;color:var(--gris)}
+.legende .badge{margin-right:7px;vertical-align:2px}
+.legende p+p{margin-top:9px}
+footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;font-size:13px;color:var(--gris)}
+
+/* ---- barre nav ---- */
+.nav-dossier{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0c0c0c;border-top:2px solid #d3b03a;
+  font-family:var(--sans);font-size:13px;letter-spacing:.06em;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 22px;padding:11px 14px}
+.nav-dossier a{color:#f6efdb;text-transform:uppercase;font-weight:700;padding:3px 2px;border-bottom:2px solid transparent;text-decoration:none}
+.nav-dossier a:hover{color:#d3b03a}
+.nav-dossier a[aria-current="page"]{color:#d3b03a;border-bottom-color:#d3b03a}
+
+@media(max-width:760px){
+  .cols{grid-template-columns:1fr}
+  .col{border-right:0;border-bottom:1px solid var(--ligne)}
+  .col:last-child{border-bottom:0}
+  .fam-h h3{font-size:17.5px}
+}
+@media(max-width:520px){
+  body{padding-bottom:72px}
+  .nav-dossier{font-size:11.5px;gap:3px 14px;padding:9px 10px}
+  section{padding:26px 0}
+}
+@media print{.nav-dossier{display:none}body{padding-bottom:0;background:#fff}.fam,.ch,.demande{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="kicker">Synthèse direction · Eyeshow Paris 2 · Confidentiel interne</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>Le magasin perd du temps<br>tous les jours. On l'a <em>compté.</em></h1>
+    <p class="sous">Quatre jours de mesure sur deux postes. Voilà ce qu'on a trouvé,
+    et ce qu'on propose de faire.</p>
+    <p class="dest">À l'attention de <b>Léa</b> et <b>David</b> — par James, opticien.</p>
+    <span class="duree">Lecture : 2 minutes</span>
+  </div>
+
+  <!-- ============ CONSTAT ============ -->
+  <section>
+    <div class="slabel">Le constat</div>
+    <h2>Quatre chiffres</h2>
+    <p class="sous-h2">Comptés sur nos vraies données, du 28 juillet au 1<sup>er</sup> août 2026.</p>
+
+    <div class="chiffres">
+      <div class="ch"><div class="n">296</div><div class="l">allers-retours entre <b>Cosium</b> et <b>Alma</b></div></div>
+      <div class="ch"><div class="n">1 000</div><div class="l">passages entre le <b>Google Doc de suivi</b> et Cosium — un tiers entre 17 h et 19 h</div></div>
+      <div class="ch"><div class="n">1 299</div><div class="l">allers-retours entre <b>Cosium</b> et <b>ZeroSix</b></div></div>
+      <div class="ch"><div class="n">1 546</div><div class="l">passages sur les <b>portails mutuelles</b></div></div>
+    </div>
+    <p class="socle">En 4 jours. Sur 2 postes seulement.</p>
+
+    <div class="punch">Tout cela se fait à la main, chaque jour — sans que personne ne l'ait jamais décidé.</div>
+  </section>
+
+  <!-- ============ TABLEAU DE BORD ============ -->
+  <section>
+    <div class="slabel">Le tableau de bord</div>
+    <h2>Cinq chantiers</h2>
+    <p class="sous-h2">Ce qui existe déjà · ce qui coince · ce qu'on met en place.</p>
+
+    <div class="fam">
+      <div class="fam-h"><span class="fnum">1</span><h3>Caisse &amp; conformité</h3><span class="badge">Mesuré</span></div>
+      <div class="cols">
+        <div class="col"><div class="t">Aujourd'hui</div><p>Cosium, Alma, et un <b>Google Doc tenu à la main</b> pour ne rien perdre.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p>Montants inversés entre Alma et la carte. Dossiers refaits de mémoire à 18 h 30. <b>Et parfois un encaissement sans facture — donc sans mutuelle.</b></p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Rapprochement automatique dans la journée. <b>Alerte à 17 h</b> quand des ventes sont parties sans flux mutuelle.</p></div>
+      </div>
+    </div>
+
+    <div class="fam">
+      <div class="fam-h"><span class="fnum">2</span><h3>Vitrine du magasin</h3><span class="badge dec">Déclaré</span></div>
+      <div class="cols">
+        <div class="col"><div class="t">Aujourd'hui</div><p><b>Rien.</b> Pas de page magasin, pas de stock visible, blog inactif depuis 2021, lien Facebook qui pointe vers Boulogne.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p>« Vous avez un site pour voir les modèles ? » — la question revient sans arrêt. <b>Le client repart sans repère.</b></p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un site branché sur le stock réel : chaque arrivage alimente la page, puis les réseaux. <b>Les maquettes sont déjà faites</b> — liens en bas.</p></div>
+      </div>
+    </div>
+
+    <div class="fam">
+      <div class="fam-h"><span class="fnum">3</span><h3>Relation client</h3><span class="badge">Mesuré</span></div>
+      <div class="cols">
+        <div class="col"><div class="t">Aujourd'hui</div><p>ZeroSix relance <b>déjà</b>, tous les jours : 66 envois en 4 jours. Le flux existe.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p>Aucune relance à 1 an ou 2 ans. Avoirs jamais suivis. Devis qui attendent et se perdent.</p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Des dates issues des vrais dossiers. Le suivi des avoirs. Le parrainage compté. <b>Un devis signable par SMS.</b></p></div>
+      </div>
+    </div>
+
+    <div class="fam">
+      <div class="fam-h"><span class="fnum">4</span><h3>Le samedi</h3><span class="badge dec">Déclaré</span></div>
+      <div class="cols">
+        <div class="col"><div class="t">Aujourd'hui</div><p>Tout passe par un poste fixe. On s'assoit avec le client devant l'écran.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p><b>20 à 90 minutes d'attente</b> d'un ordinateur libre. Pendant ce temps, d'autres attendent — et certains partent sans rien dire.</p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Une tablette qui accueille et prépare le dossier en arrière-plan. <b>L'ordinateur ne sert plus qu'à finaliser.</b></p></div>
+      </div>
+    </div>
+
+    <div class="fam">
+      <div class="fam-h"><span class="fnum">5</span><h3>Carnet noir &amp; mutuelles</h3><span class="badge dec">Déclaré</span></div>
+      <div class="cols">
+        <div class="col"><div class="t">Aujourd'hui</div><p>Un carnet papier. Et la prise en charge mutuelle <b>estimée de tête</b>, selon qui est au comptoir.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p>Le carnet ne dit rien à celui qui n'est pas là, et ne se souvient de rien tout seul. Les oublis sont silencieux.</p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un carnet partagé qui relance seul. Et une <b>base de fourchettes par mutuelle</b>, construite sur nos remboursements réels.</p></div>
+      </div>
+    </div>
+
+    <div class="plustard"><b>Deux autres chantiers viennent après</b> — la vie interne de l'équipe (paie, planning, heures)
+    et les promos &amp; publicité. Ils attendent que les cinq premiers tiennent.</div>
+  </section>
+
+  <!-- ============ DEMANDE ============ -->
+  <section>
+    <div class="demande">
+      <div class="slabel" style="color:var(--or)">Ce que je demande</div>
+      <h2>Trente jours. <em>Zéro euro.</em></h2>
+      <div class="steps">
+        <div class="step"><div class="k">1</div><p><b>30 jours de mesure</b> sur les postes. Équipe prévenue par écrit, périmètre professionnel uniquement.</p></div>
+        <div class="step"><div class="k">2</div><p><b>Point à J+14.</b> Vous poursuivez, vous ajustez, ou vous arrêtez.</p></div>
+        <div class="step"><div class="k">3</div><p><b>Vous arbitrez à J+30</b>, chaque chantier avec sa valeur mesurée — ou marquée « inconnue ».</p></div>
+      </div>
+      <div class="zero">0 € · aucun engagement · arrêtable à tout moment</div>
+    </div>
+  </section>
+
+  <!-- ============ ALLER PLUS LOIN ============ -->
+  <section>
+    <div class="slabel">Si vous voulez creuser</div>
+    <h2>Pour aller plus loin</h2>
+    <p class="sous-h2">Rien d'obligatoire pour décider. Tout est là si vous voulez vérifier.</p>
+    <div class="liens">
+      <a class="lien" href="dossier.html">
+        <div class="t">Le dossier complet</div>
+        <div class="d">18 pages : le détail de chaque chantier, et la source exacte de chaque chiffre en annexe.</div>
+      </a>
+      <a class="lien" href="index.html">
+        <div class="t">La maquette du site</div>
+        <div class="d">À quoi ressemblerait le site du magasin, avec les créateurs réellement en boutique.</div>
+      </a>
+      <a class="lien" href="instagram.html">
+        <div class="t">La simulation Instagram</div>
+        <div class="d">Le compte à créer et la ligne éditoriale : arrivages, coulisses, conseils.</div>
+      </a>
+    </div>
+
+    <div class="legende">
+      <p><span class="badge">Mesuré</span> compté sur nos vraies données. La source exacte est en annexe du dossier complet.</p>
+      <p><span class="badge dec">Déclaré</span> vécu au comptoir, pas encore chiffré. C'est ce que les 30 jours permettront de mesurer.</p>
+      <p style="margin-top:13px"><b>Aucun euro de gain n'est promis dans ce document</b>, et c'est volontaire. Ce qui peut être mesuré le sera — sur notre magasin, avant toute décision.</p>
+    </div>
+  </section>
+
+  <footer>
+    Synthèse préparée par James · opticien · Eyeshow Paris 2, rue Montmartre.<br>
+    Document interne confidentiel — destinataires : Léa et David.
+  </footer>
+
+</div>
+
+<nav class="nav-dossier" aria-label="Navigation du dossier direction">
+  <a href="synthese.html" aria-current="page">Synthèse</a>
+  <a href="dossier.html">Dossier complet</a>
+  <a href="index.html">Le site</a>
+  <a href="instagram.html">Instagram</a>
+</nav>
+
+</body>
+</html>
