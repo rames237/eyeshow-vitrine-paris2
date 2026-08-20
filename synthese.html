@@ -97,6 +97,43 @@ h2{font-size:clamp(23px,3.6vw,32px);margin-bottom:6px}
 .legende p+p{margin-top:9px}
 footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;font-size:13px;color:var(--gris)}
 
+/* ---- pied de carte : ce que ça change + invitation ---- */
+.pv{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:14px 18px;
+  background:var(--noir);border-top:3px solid var(--or)}
+.pv .txt{flex:1 1 260px;color:#e8e2d2;font-size:14.5px;line-height:1.4}
+.pv .txt b{color:var(--or);font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:.13em;display:block;margin-bottom:4px}
+.pv .go{flex:0 0 auto;color:var(--noir);background:var(--or);font-weight:700;font-size:13px;
+  padding:8px 15px;border-radius:99px;text-decoration:none;white-space:nowrap;transition:transform .15s,background .15s}
+.pv .go:hover{background:#efc94f;transform:translateX(3px)}
+
+/* ---- aperçus cliquables ---- */
+.apercus{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px 18px;background:#fdfaf0;border-top:1px solid var(--ligne)}
+.ap{display:block;text-decoration:none;color:inherit;border:1px solid var(--ligne);border-radius:4px;overflow:hidden;
+  background:var(--blanc);transition:transform .15s,box-shadow .15s,border-color .15s}
+.ap:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.13);border-color:var(--or)}
+.ap img{width:100%;height:150px;object-fit:cover;object-position:top center;display:block;border-bottom:1px solid var(--ligne)}
+.ap .cap{padding:11px 13px;font-size:14px}
+.ap .cap .n{font-family:var(--serif);font-size:16.5px;color:var(--noir)}
+.ap .cap .a{color:var(--or-fonce);font-weight:700;font-size:12.5px;margin-top:4px}
+
+/* ---- invitation en ligne ---- */
+.inline-go{margin-top:16px;font-size:15px}
+.inline-go a{color:var(--or-fonce);font-weight:700;text-decoration:none;border-bottom:2px solid var(--or)}
+.inline-go a:hover{color:var(--noir);border-bottom-color:var(--noir)}
+
+/* ---- trois niveaux ---- */
+.niv{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:6px}
+.n1{background:var(--blanc);border:1px solid var(--ligne);border-radius:5px;overflow:hidden;display:flex;flex-direction:column}
+.n1.ici{border:2px solid var(--noir)}
+.n1 .tete{padding:15px 17px 13px;flex:1}
+.n1 .etape{font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or-fonce);margin-bottom:6px}
+.n1 .nom{font-family:var(--serif);font-size:20px;color:var(--noir)}
+.n1 .desc{font-size:14.5px;color:var(--gris);margin-top:7px;line-height:1.45}
+.n1 .pied{display:block;padding:12px 17px;background:var(--noir);color:var(--or);font-weight:700;font-size:13.5px;text-decoration:none;transition:background .15s}
+.n1 .pied:hover{background:#1e1a10}
+.n1 .pied.off{background:#f0ead6;color:var(--gris);cursor:default}
+@media(max-width:560px){.apercus{grid-template-columns:1fr}}
+
 /* ---- barre nav ---- */
 .nav-dossier{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0c0c0c;border-top:2px solid #d3b03a;
   font-family:var(--sans);font-size:13px;letter-spacing:.06em;
@@ -148,6 +185,8 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
     <p class="socle">En 4 jours. Sur 2 postes seulement.</p>
 
     <div class="punch">Tout cela se fait à la main, chaque jour — sans que personne ne l'ait jamais décidé.</div>
+    <p class="inline-go">Ces chiffres sortent d'un relevé jour par jour, sur nos propres postes.
+    <a href="dossier.html#preuve">Comment on les a obtenus &rarr;</a></p>
   </section>
 
   <!-- ============ TABLEAU DE BORD ============ -->
@@ -160,8 +199,12 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
       <div class="fam-h"><span class="fnum">1</span><h3>Caisse &amp; conformité</h3><span class="badge">Mesuré</span></div>
       <div class="cols">
         <div class="col"><div class="t">Aujourd'hui</div><p>Cosium, Alma, et un <b>Google Doc tenu à la main</b> pour ne rien perdre.</p></div>
-        <div class="col pb"><div class="t">Ce qui coince</div><p>Montants inversés entre Alma et la carte. Dossiers refaits de mémoire à 18 h 30. <b>Et parfois un encaissement sans facture — donc sans mutuelle.</b></p></div>
-        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Rapprochement automatique dans la journée. <b>Alerte à 17 h</b> quand des ventes sont parties sans flux mutuelle.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p>Montants inversés entre Alma et la carte. Dossiers refaits de mémoire à 18&nbsp;h&nbsp;30. <b>Et parfois un encaissement sans facture — donc sans mutuelle.</b></p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Rapprochement automatique dans la journée. <b>Alerte à 17&nbsp;h</b> quand des ventes sont parties sans flux mutuelle.</p></div>
+      </div>
+      <div class="pv">
+        <div class="txt"><b>Ce que ça change pour vous</b>La fin de journée redevient une fin de journée. Plus d'écart découvert trois semaines plus tard.</div>
+        <a class="go" href="dossier.html#familles">Le détail dans le dossier &rarr;</a>
       </div>
     </div>
 
@@ -169,17 +212,35 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
       <div class="fam-h"><span class="fnum">2</span><h3>Vitrine du magasin</h3><span class="badge dec">Déclaré</span></div>
       <div class="cols">
         <div class="col"><div class="t">Aujourd'hui</div><p><b>Rien.</b> Pas de page magasin, pas de stock visible, blog inactif depuis 2021, lien Facebook qui pointe vers Boulogne.</p></div>
-        <div class="col pb"><div class="t">Ce qui coince</div><p>« Vous avez un site pour voir les modèles ? » — la question revient sans arrêt. <b>Le client repart sans repère.</b></p></div>
-        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un site branché sur le stock réel : chaque arrivage alimente la page, puis les réseaux. <b>Les maquettes sont déjà faites</b> — liens en bas.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p>«&nbsp;Vous avez un site pour voir les modèles&nbsp;?&nbsp;» — la question revient sans arrêt. <b>Le client repart sans repère.</b></p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un site branché sur le stock réel&nbsp;: chaque arrivage alimente la page, puis les réseaux.</p></div>
+      </div>
+      <div class="apercus">
+        <a class="ap" href="index.html">
+          <img src="assets/apercu-site.jpg" alt="Aperçu de la maquette du site du magasin">
+          <div class="cap"><div class="n">La maquette du site</div><div class="a">Voir en grand &rarr;</div></div>
+        </a>
+        <a class="ap" href="instagram.html">
+          <img src="assets/apercu-instagram.jpg" alt="Aperçu de la simulation du compte Instagram">
+          <div class="cap"><div class="n">Le compte Instagram</div><div class="a">Voir en grand &rarr;</div></div>
+        </a>
+      </div>
+      <div class="pv">
+        <div class="txt"><b>Ce que ça change pour vous</b>Un client qui a vu nos montures avant de venir arrive à moitié décidé.</div>
+        <a class="go" href="index.html">Voir les maquettes &rarr;</a>
       </div>
     </div>
 
     <div class="fam">
       <div class="fam-h"><span class="fnum">3</span><h3>Relation client</h3><span class="badge">Mesuré</span></div>
       <div class="cols">
-        <div class="col"><div class="t">Aujourd'hui</div><p>ZeroSix relance <b>déjà</b>, tous les jours : 66 envois en 4 jours. Le flux existe.</p></div>
+        <div class="col"><div class="t">Aujourd'hui</div><p>ZeroSix relance <b>déjà</b>, tous les jours&nbsp;: 66 envois en 4 jours. Le flux existe.</p></div>
         <div class="col pb"><div class="t">Ce qui coince</div><p>Aucune relance à 1 an ou 2 ans. Avoirs jamais suivis. Devis qui attendent et se perdent.</p></div>
         <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Des dates issues des vrais dossiers. Le suivi des avoirs. Le parrainage compté. <b>Un devis signable par SMS.</b></p></div>
+      </div>
+      <div class="pv">
+        <div class="txt"><b>Ce que ça change pour vous</b>Des clients qui reviennent sans qu'on ait à y penser.</div>
+        <a class="go" href="dossier.html#familles">Le détail dans le dossier &rarr;</a>
       </div>
     </div>
 
@@ -187,8 +248,12 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
       <div class="fam-h"><span class="fnum">4</span><h3>Le samedi</h3><span class="badge dec">Déclaré</span></div>
       <div class="cols">
         <div class="col"><div class="t">Aujourd'hui</div><p>Tout passe par un poste fixe. On s'assoit avec le client devant l'écran.</p></div>
-        <div class="col pb"><div class="t">Ce qui coince</div><p><b>20 à 90 minutes d'attente</b> d'un ordinateur libre. Pendant ce temps, d'autres attendent — et certains partent sans rien dire.</p></div>
+        <div class="col pb"><div class="t">Ce qui coince</div><p><b>20 à 90 minutes d'attente</b> d'un ordinateur libre. Pendant ce temps d'autres attendent — et certains partent sans rien dire.</p></div>
         <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Une tablette qui accueille et prépare le dossier en arrière-plan. <b>L'ordinateur ne sert plus qu'à finaliser.</b></p></div>
+      </div>
+      <div class="pv">
+        <div class="txt"><b>Ce que ça change pour vous</b>Des samedis qui finissent à l'heure.</div>
+        <a class="go" href="dossier.html#familles">Le détail dans le dossier &rarr;</a>
       </div>
     </div>
 
@@ -197,7 +262,11 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
       <div class="cols">
         <div class="col"><div class="t">Aujourd'hui</div><p>Un carnet papier. Et la prise en charge mutuelle <b>estimée de tête</b>, selon qui est au comptoir.</p></div>
         <div class="col pb"><div class="t">Ce qui coince</div><p>Le carnet ne dit rien à celui qui n'est pas là, et ne se souvient de rien tout seul. Les oublis sont silencieux.</p></div>
-        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un carnet partagé qui relance seul. Et une <b>base de fourchettes par mutuelle</b>, construite sur nos remboursements réels.</p></div>
+        <div class="col sol"><div class="t">Ce qu'on met en place</div><p>Un carnet partagé qui relance seul. Et une <b>base de fourchettes par mutuelle</b> construite sur nos remboursements réels.</p></div>
+      </div>
+      <div class="pv">
+        <div class="txt"><b>Ce que ça change pour vous</b>Voir ce qui attend dans le magasin, sans être dans le magasin.</div>
+        <a class="go" href="dossier.html#familles">Le détail dans le dossier &rarr;</a>
       </div>
     </div>
 
@@ -221,22 +290,37 @@ footer{border-top:1px solid var(--ligne);margin-top:30px;padding:22px 0 30px;fon
 
   <!-- ============ ALLER PLUS LOIN ============ -->
   <section>
-    <div class="slabel">Si vous voulez creuser</div>
-    <h2>Pour aller plus loin</h2>
+    <div class="slabel">Et maintenant</div>
+    <h2>Trois niveaux, selon votre envie</h2>
     <p class="sous-h2">Rien d'obligatoire pour décider. Tout est là si vous voulez vérifier.</p>
-    <div class="liens">
-      <a class="lien" href="dossier.html">
-        <div class="t">Le dossier complet</div>
-        <div class="d">18 pages : le détail de chaque chantier, et la source exacte de chaque chiffre en annexe.</div>
-      </a>
-      <a class="lien" href="index.html">
-        <div class="t">La maquette du site</div>
-        <div class="d">À quoi ressemblerait le site du magasin, avec les créateurs réellement en boutique.</div>
-      </a>
-      <a class="lien" href="instagram.html">
-        <div class="t">La simulation Instagram</div>
-        <div class="d">Le compte à créer et la ligne éditoriale : arrivages, coulisses, conseils.</div>
-      </a>
+
+    <div class="niv">
+      <div class="n1 ici">
+        <div class="tete">
+          <div class="etape">Niveau 1 · vous êtes ici</div>
+          <div class="nom">Cette synthèse</div>
+          <div class="desc">Le constat, les cinq chantiers, et ce que je demande. Deux minutes.</div>
+        </div>
+        <span class="pied off">Vous venez de la lire</span>
+      </div>
+
+      <div class="n1">
+        <div class="tete">
+          <div class="etape">Niveau 2 · pour creuser</div>
+          <div class="nom">Le dossier complet</div>
+          <div class="desc">Chaque chantier détaillé, la méthode de mesure, et la source exacte de chaque chiffre en annexe. 18 pages.</div>
+        </div>
+        <a class="pied" href="dossier.html">Ouvrir le dossier &rarr;</a>
+      </div>
+
+      <div class="n1">
+        <div class="tete">
+          <div class="etape">Niveau 3 · pour voir</div>
+          <div class="nom">Les maquettes</div>
+          <div class="desc">Le site du magasin et le compte Instagram, tels qu'ils pourraient exister. Déjà réalisés, cliquables.</div>
+        </div>
+        <a class="pied" href="index.html">Voir les maquettes &rarr;</a>
+      </div>
     </div>
 
     <div class="legende">
