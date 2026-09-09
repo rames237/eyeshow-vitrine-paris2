@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Qwifon — Stratégie V1 & Build/Test</title>
+<style>
+:root{--bg:#f6f6f3;--paper:#fff;--text:#151515;--muted:#656565;--line:#e6e6df;--soft:#efefeb;--accent:#111;--warn:#fff5cf} @media(prefers-color-scheme:dark){:root{--bg:#101010;--paper:#171717;--text:#f2f2ef;--muted:#aaa;--line:#333;--soft:#222;--accent:#fff;--warn:#312a12}} *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.65}.wrap{max-width:1100px;margin:auto;padding:24px 14px 80px}.hero,.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px;margin-bottom:18px}.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--soft);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase}.hero h1{font-size:clamp(34px,6vw,62px);line-height:1.02;margin:12px 0}.hero p{max-width:850px;color:var(--muted);font-size:18px}.note{background:var(--warn);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:18px}h2{font-size:30px;margin-top:8px}h3{font-size:21px;margin-top:28px}code{background:var(--soft);padding:2px 6px;border-radius:6px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.mini{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--paper)}.mini strong{display:block;margin-bottom:5px}.flow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:14px;overflow:auto}.table{overflow:auto;border:1px solid var(--line);border-radius:14px}table{border-collapse:collapse;width:100%;min-width:760px}th,td{padding:12px 13px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{background:var(--soft);font-size:13px}.pill{display:inline-block;padding:3px 8px;border-radius:999px;background:var(--soft);font-size:12px;font-weight:700}ul{padding-left:22px}a{color:inherit}footer{text-align:center;color:var(--muted);font-size:12px;margin-top:20px}@media(max-width:700px){.hero,.card{padding:20px;border-radius:15px}.wrap{padding:10px 8px 50px}h2{font-size:25px}}
+</style>
+</head>
+<body><div class="wrap">
+<section class="hero">
+<span class="badge">Qwifon · Strategic Build Brief</span>
+<h1>Machine de distribution digitale — Cameroun</h1>
+<p>Synthèse opérationnelle des recherches croisées : architecture V0/V1, points de consensus, divergences à tester et structure de Build/Test pour l’agent d’exécution.</p>
+<div class="note"><strong>Document public statique :</strong> aucun cookie, aucun tracker, aucune authentification. Les marges, SLA, minimum deposits et droits de sous-distribution restent des hypothèses tant qu’ils ne sont pas confirmés contractuellement.</div>
+</section>
+
+<section class="card">
+<h2>1. Décision stratégique actuelle</h2>
+<p>Le projet n’est pas « une app de recharge ». La cible est une <strong>couche N2 d’orchestration et de distribution</strong> qui agrège des rails existants et devient l’interface B2C, reseller et plus tard API/white-label.</p>
+<div class="flow">N0 : MTN / Orange / CAMTEL / ENEO / autres producteurs
+        ↓
+N1 : agrégateurs / APIs / PSP sous contrat
+        ↓
+N2 : Qwifon Core
+catalogue · quote · routing · ledger · réconciliation · fraude · CRM · support · pricing
+        ↓
+B2C WhatsApp/Web  |  Revendeurs  |  API/White-label
+        ↓
+Clients finaux</div>
+<div class="grid">
+<div class="mini"><strong>Data/Airtime</strong>Acquisition + fréquence. Potentiel élevé, marge à démontrer.</div>
+<div class="mini"><strong>ENEO prépayé</strong>Urgence + ancrage + rétention. Très bon candidat produit héros.</div>
+<div class="mini"><strong>Mobile Money</strong>Rail de paiement. Ce n’est pas le produit final mais la colonne vertébrale.</div>
+<div class="mini"><strong>Gaming/eSIM/SaaS</strong>Couche de marge future. Pas nécessaire à la V0.</div>
+</div>
+<p><strong>Choix produit :</strong> les rapports divergent entre Data et ENEO. On ne tranche pas par opinion : la V0 doit supporter les deux et les faire combattre sur <strong>CAC, contribution nette, fiabilité, support et second achat J+7/J+30</strong>.</p>
+</section>
+
+<section class="card">
+<h2>2. Architecture non négociable</h2>
+<ul>
+<li><strong>Charlotte = interface conversationnelle</strong> : intention, qualification, aide, statut, relance consentie.</li>
+<li><strong>Core déterministe = argent et exécution</strong> : paiement, idempotence, API, ledger, remboursements, logs.</li>
+<li><strong>Pas de wallet client réglementé en V1.</strong> Le reseller peut avoir un compte préfinancé/stock numérique contractuel, sous réserve de validation juridique.</li>
+<li><strong>Pas de commission de recrutement.</strong> Le revenu du réseau vient de transactions finales payées, livrées et non remboursées.</li>
+<li><strong>Multi-fournisseurs à terme.</strong> Le moat est l’orchestration, la donnée transactionnelle et la qualité de reprise, pas le secret du fournisseur.</li>
+</ul>
+</section>
+
+<section class="card" id="build-test">
+<span class="pill">Agent handoff</span>
+<h2>3. Build/Test — structure que l’agent doit approfondir</h2>
+<p><strong>Mandat :</strong> construire d’abord un <em>Transaction Lab</em> capable de traiter ENEO prépayé + un rail Data/Airtime via WhatsApp/web et Mobile Money, avec preuve de paiement, livraison contrôlée, reçu, réconciliation et support d’incident.</p>
+<h3>3.1 Workstreams</h3>
+<div class="table"><table><tr><th>Bloc</th><th>Questions à approfondir</th><th>Livrable attendu</th></tr>
+<tr><td>Fournisseurs / N1</td><td>Smobilpay/Maviance, MTN/Orange direct, fallback, catalogue, prix, SLA, refunds, settlement, sous-distribution.</td><td>Matrice primaire/secours + contrats/devis.</td></tr>
+<tr><td>Unit economics</td><td>Contribution nette par ticket après collecte, provider, taxes, support, échecs, remises, reseller.</td><td>Calculateur par produit et tranche.</td></tr>
+<tr><td>Réglementaire</td><td>Préfinancement reseller vs wallet client, KYC, conservation de valeur, données, reçus, logs.</td><td>Checklist conformité + zones interdites V0/V1.</td></tr>
+<tr><td>Core transactionnel</td><td>États, idempotence, webhook, polling, timeout, retry, refund, ledger, réconciliation.</td><td>State machine + DB schema + API contracts.</td></tr>
+<tr><td>Charlotte</td><td>Intentions, destinataire, quote, confirmation, handoff, opt-in relance.</td><td>Conversation map + limites de l’IA.</td></tr>
+<tr><td>Reseller</td><td>Préfinancement, grilles, commission, activation, limites, incidents.</td><td>Spec reseller sans MLM.</td></tr>
+<tr><td>Instrumentation</td><td>GMV, contribution, succès, temps de livraison, refunds, support, J+7/J+30, CAC/LTV.</td><td>Event schema + dashboard minimal.</td></tr>
+</table></div>
+
+<h3>3.2 Ordre de build</h3>
+<div class="flow">A. Vérité contractuelle
+→ devis · contrats · catalogue · sandbox · responsabilités
+
+B. Core transactionnel
+→ catalogue versionné · quote · order state machine · payment callback · fulfillment adapter · ledger · reconciliation · receipts
+
+C. Interface
+→ WhatsApp / Charlotte · web admin minimal
+
+D. Transaction Lab
+→ 100–200 transactions contrôlées
+
+E. Acquisition
+→ uniquement si contribution nette + fiabilité passent les gates
+
+F. Reseller pilote
+→ 20–50 revendeurs après preuve</div>
+
+<h3>3.3 State machine minimale</h3>
+<p><code>INITIATED → QUOTED → PAYMENT_PENDING → PAID → FULFILLMENT_PENDING → DELIVERED</code></p>
+<p>Exceptions : <code>PAYMENT_FAILED</code>, <code>FULFILLMENT_FAILED</code>, <code>RECONCILIATION_REQUIRED</code>, <code>REFUND_PENDING</code>, <code>REFUNDED</code>.</p>
+<p><strong>Règle absolue :</strong> aucun timeout, retry ou message IA ne peut provoquer deux livraisons.</p>
+
+<h3>3.4 Matrice de tests</h3>
+<div class="table"><table><tr><th>Test</th><th>Cas</th><th>Critère de passage</th></tr>
+<tr><td>Paiement</td><td>Callback absent, doublé, tardif, mauvais montant, abandon.</td><td>Aucun fulfillment sans paiement vérifié.</td></tr>
+<tr><td>Fulfillment</td><td>Succès, timeout, réponse ambiguë, panne N1, retry.</td><td>Jamais deux livraisons pour une commande.</td></tr>
+<tr><td>Réconciliation</td><td>Paiement reçu/non livré, provider dit livré/client conteste.</td><td>Chaque transaction finit dans un état explicable.</td></tr>
+<tr><td>Refund</td><td>Échec confirmé, timeout durable, erreur avant exécution.</td><td>Règle et délai déterministes.</td></tr>
+<tr><td>Charlotte</td><td>Numéro ambigu, produit absent, demande hors scope, prompt injection.</td><td>L’IA n’invente ni prix, ni paiement, ni statut.</td></tr>
+<tr><td>Charge</td><td>Pic commandes, burst webhooks, provider lent.</td><td>Queue stable, zéro perte de commande.</td></tr>
+<tr><td>Sécurité</td><td>Replay webhook, callback falsifié, secrets, logs sensibles.</td><td>Signature, moindre privilège, secrets isolés.</td></tr>
+</table></div>
+
+<h3>3.5 Gates Go / No-Go</h3>
+<ul>
+<li><strong>Gate 1 :</strong> droit commercial écrit pour l’usage prévu.</li>
+<li><strong>Gate 2 :</strong> contribution nette positive sur transactions réelles.</li>
+<li><strong>Gate 3 :</strong> zéro double fulfillment sur le pilote.</li>
+<li><strong>Gate 4 :</strong> réconciliation quotidienne propre.</li>
+<li><strong>Gate 5 :</strong> incident et remboursement résolvables.</li>
+<li><strong>Gate 6 :</strong> support humain pour les exceptions.</li>
+<li><strong>Gate 7 :</strong> consentement WhatsApp + règles data validés.</li>
+</ul>
+
+<h3>3.6 Livrables obligatoires avant production</h3>
+<p>Architecture finale, ADRs, schéma DB, contrats API internes, state machine, threat model, gestion des secrets, matrice providers, calculateur d’économie unitaire, test plan, fixtures sandbox, runbook incident, dashboard, checklist conformité, plan de déploiement/rollback et critères Go/No-Go.</p>
+
+<h3>3.7 Interdictions V0/V1</h3>
+<p>Pas de wallet client réglementé, pas de microcrédit, pas de multi-pays, pas d’app native obligatoire, pas de commission de recrutement, pas d’ads massives avant instrumentation, pas de promesse « moins cher » sans preuve, pas de dépendance aveugle à un seul N1.</p>
+</section>
+
+<section class="card">
+<h2>4. Ce que l’agent doit encore rechercher avant de coder en production</h2>
+<p>Les rapports donnent une direction, pas les valeurs finales. L’agent doit remplacer les inconnues par des preuves : <strong>prix N1, minimum deposit, SLA, settlement, refund policy, disponibilité catalogue, droit de sous-distribution, frais MTN/Orange, contraintes ENEO, fiscalité applicable, KYC et responsabilité en cas d’échec.</strong></p>
+<p>La bonne méthode n’est pas « approfondir puis tout construire ». C’est : <strong>question → preuve → décision → spec → test → métrique → gate</strong>.</p>
+</section>
+
+<footer>Qwifon — Synthèse V1 & Build/Test · 9 septembre 2026</footer>
+</div></body></html>
